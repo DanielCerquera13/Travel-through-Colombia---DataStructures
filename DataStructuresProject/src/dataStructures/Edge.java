@@ -1,39 +1,26 @@
 package dataStructures;
 
-public class Edge<T extends Comparable<T>> implements Comparable<T> {
+public class Edge<E extends Comparable<E>> implements Comparable<E> {
 
-	private String name;
-	private Vertex<?> from;
-	private Vertex<?> to;
+	private E value;
 	private double cost;
 	private boolean directed;
 
-	public Edge(Vertex<?> from, Vertex<?> to, int cost) {
+	public Edge(boolean directed, double cost, E value) {
 
-		this.from = from;
-		this.to = to;
-		this.cost = cost;
-
-	}
-	
-	public Edge(boolean directed,double cost, String name) {
-	
-		this.name = name;
+		this.value = value;
 		this.cost = cost;
 		this.directed = directed;
-		from = null;
-		to = null;
-	
-	}
-	
-	public String getName() {
-		return name;
+
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public E getValue() {
+		return value;
 	}
-	
+
+	public void setName(E value) {
+		this.value = value;
+	}
 
 	public boolean isDirected() {
 		return directed;
@@ -41,22 +28,6 @@ public class Edge<T extends Comparable<T>> implements Comparable<T> {
 
 	public void setDirected(boolean directed) {
 		this.directed = directed;
-	}
-
-	public Vertex<?> getFrom() {
-		return from;
-	}
-
-	public void setFrom(Vertex<?> from) {
-		this.from = from;
-	}
-
-	public Vertex<?> getTo() {
-		return to;
-	}
-
-	public void setTo(Vertex<?> to) {
-		this.to = to;
 	}
 
 	public double getCost() {
@@ -68,16 +39,16 @@ public class Edge<T extends Comparable<T>> implements Comparable<T> {
 	}
 
 	@Override
-	public int compareTo(T o) {
+	public int compareTo(E o) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
+
 	@Override
 	public String toString() {
-		
-	return cost+" - "+name;	
-		
+
+		return cost + " - " + value.toString();
+
 	}
 
 }

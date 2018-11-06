@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GraphByLists<T extends Comparable<T>> implements IGraph<T>{
+public class GraphByLists<T extends Comparable<T>, E extends Comparable<E>> implements IGraph<T,E>{
 
 	
 	private Map<Vertex<T>,ArrayList<Edge<?>>> adjList;
@@ -17,14 +17,16 @@ public class GraphByLists<T extends Comparable<T>> implements IGraph<T>{
 	}
 
 	@Override
-	public void addEdge(T from, T destination, boolean directed, double cost, String name) {
-		// TODO Auto-generated method stub
+	public void addEdge(T from, T destination, boolean directed, double cost, E value) {
+		
+		
+		
 		
 	}
 
 	@Override
 	public void removeEdge(T from, T destination, boolean directed, double cost) {
-		// TODO Auto-generated method stub
+
 		
 	}
 
@@ -36,19 +38,19 @@ public class GraphByLists<T extends Comparable<T>> implements IGraph<T>{
 
 	@Override
 	public void removeVertex(T valueVertex) {
-		// TODO Auto-generated method stub
+
 		
 	}
 
 	@Override
 	public boolean isAdjacent(T vertexA, T vertexB) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 
 	@Override
 	public int getNumVertex() {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 	

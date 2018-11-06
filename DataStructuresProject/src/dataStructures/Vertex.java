@@ -1,25 +1,14 @@
 package dataStructures;
 
-import java.util.ArrayList;
 
 public class Vertex<T extends Comparable<T>> implements Comparable<T> {
 
 	private T value;
-	private ArrayList<Edge<?>> edges;
 
 	public Vertex(T value) {
 
 		this.value = value;
-		edges = new ArrayList<Edge<?>>();
 
-	}
-
-	public ArrayList<Edge<?>> getEdges() {
-		return edges;
-	}
-
-	public void setEdges(ArrayList<Edge<?>> edges) {
-		this.edges = edges;
 	}
 
 	public T getValue() {
@@ -32,7 +21,6 @@ public class Vertex<T extends Comparable<T>> implements Comparable<T> {
 
 	@Override
 	public int compareTo(T o) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

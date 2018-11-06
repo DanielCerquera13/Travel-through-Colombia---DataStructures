@@ -2,9 +2,9 @@ package dataStructures;
 
 import java.util.ArrayList;
 
-public class GraphByMatrix<T extends Comparable<T>> implements IGraph<T> {
+public class GraphByMatrix<T extends Comparable<T>, E extends Comparable<E>> implements IGraph<T, E> {
 
-	private ArrayList<Edge<?>>[][] adjMatrix;
+	private ArrayList<Edge<E>>[][] adjMatrix;
 	private ArrayList<Vertex<T>> vertices;
 	private int numVertex;
 
@@ -33,7 +33,7 @@ public class GraphByMatrix<T extends Comparable<T>> implements IGraph<T> {
 
 			for (int j = 0; j < adjMatrix[0].length; j++) {
 
-				adjMatrix[i][j] = new ArrayList<Edge<?>>();
+				adjMatrix[i][j] = new ArrayList<Edge<E>>();
 
 			}
 
@@ -66,16 +66,16 @@ public class GraphByMatrix<T extends Comparable<T>> implements IGraph<T> {
 	}
 
 	@Override
-	public void addEdge(T from, T destination, boolean directed, double cost, String name) {
+	public void addEdge(T from, T destination, boolean directed, double cost, E value) {
 
 		int f = getIndexVertex(from);
 		int d = getIndexVertex(destination);
 
 		if (directed) {
-			adjMatrix[f][d].add(new Edge<>(directed, cost, name));
+			adjMatrix[f][d].add(new Edge<>(directed, cost, value));
 		} else {
-			adjMatrix[f][d].add(new Edge<>(directed, cost, name));
-			adjMatrix[d][f].add(new Edge<>(directed, cost, name));
+			adjMatrix[f][d].add(new Edge<>(directed, cost, value));
+			adjMatrix[d][f].add(new Edge<>(directed, cost, value));
 		}
 	}
 
@@ -134,16 +134,21 @@ public class GraphByMatrix<T extends Comparable<T>> implements IGraph<T> {
 
 	}
 
-	public ArrayList<Edge<?>> getEdgesOfVertex(T valueVertex) {
+	/**
+	 * Gets the edges of the specified vertex.
+	 * @param valueVertex The vertex to know its edges.
+	 * @return The edges of the specified vertex.
+	 */
+	public ArrayList<Edge<E>> getEdgesOfVertex(T valueVertex) {
 
-		int v = getIndexVertex(valueVertex);
-		ArrayList<Edge<?>> edges = new ArrayList<>();
+		int E = getIndexVertex(valueVertex);
+		ArrayList<Edge<E>> edges = new ArrayList<>();
 
 		for (int i = 0; i < adjMatrix[0].length; i++) {
 
-			if (!adjMatrix[v][i].isEmpty()) {
+			if (!adjMatrix[E][i].isEmpty()) {
 
-				edges.addAll(adjMatrix[v][i]);
+				edges.addAll(adjMatrix[E][i]);
 
 			}
 
@@ -153,6 +158,49 @@ public class GraphByMatrix<T extends Comparable<T>> implements IGraph<T> {
 
 	}
 
+	/**
+	 * Gets the quantity of edges of the specified vertex.
+	 * @param valueVertex The vertex to know its quantity of edges.
+	 * @return The quantity of edges of the specified vertex.
+	 */
+	public int numEdgesOfVertex(T valueVertex) {
+
+		return getEdgesOfVertex(valueVertex).size();
+
+	}
+
+	/**
+	 * Gets the edges between two vertices.
+	 * @param vertexA The vertex "from" (origin of the edge)
+	 * @param vertexB The vertex "to" (where the edge ends)
+	 * @return The edges between two vertices specified.
+	 */
+	public ArrayList<Edge<E>> edgesBetween(T vertexA, T vertexB){
+		
+	ArrayList<Edge<E>> edges = new ArrayList<>();
+	
+	int indexA = getIndexVertex(vertexA);
+	int indexB = getIndexVertex(vertexB);
+	
+	for(int i = 0; i<adjMatrix.length; i++) {
+		
+		for (int j = 0; j < adjMatrix[0].length; j++) {
+			
+			edges = adjMatrix[indexA][indexB];
+			
+		}
+		
+	}
+	
+	
+	return edges;
+		
+	}
+	
+	/**
+	 * Draw a graph with all connections Vertices-Edges. Including Directed and Undirected edges between all vertices.
+	 * @return The graph like a string.
+	 */
 	public String graphToString() {
 
 		String g = "";
@@ -188,11 +236,11 @@ public class GraphByMatrix<T extends Comparable<T>> implements IGraph<T> {
 		return numVertex;
 	}
 
-	public ArrayList<Edge<?>>[][] getAdjMatrix() {
+	public ArrayList<Edge<E>>[][] getAdjMatrix() {
 		return adjMatrix;
 	}
 
-	public void setAdjMatrix(ArrayList<Edge<?>>[][] adjMatrix) {
+	public void setAdjMatrix(ArrayList<Edge<E>>[][] adjMatrix) {
 		this.adjMatrix = adjMatrix;
 	}
 

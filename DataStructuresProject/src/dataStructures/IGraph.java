@@ -1,6 +1,6 @@
 package dataStructures;
 
-public interface IGraph<T extends Comparable<T>> {
+public interface IGraph<T extends Comparable<T>, E extends Comparable<E>> {
 	
 	
 	/**
@@ -10,7 +10,7 @@ public interface IGraph<T extends Comparable<T>> {
 	 * @param directed True if the edge is directed or false if not.
 	 * @param cost The edge cost value
 	 */
-	void addEdge(T from, T destination, boolean directed, double cost, String name);
+	void addEdge(T from, T destination, boolean directed, double cost, E value);
 	
 	/**
 	 * This method removes an edge of the graph.
