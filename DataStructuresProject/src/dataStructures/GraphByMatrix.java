@@ -136,6 +136,7 @@ public class GraphByMatrix<T extends Comparable<T>, E extends Comparable<E>> imp
 
 	/**
 	 * Gets the edges of the specified vertex.
+	 * 
 	 * @param valueVertex The vertex to know its edges.
 	 * @return The edges of the specified vertex.
 	 */
@@ -160,6 +161,7 @@ public class GraphByMatrix<T extends Comparable<T>, E extends Comparable<E>> imp
 
 	/**
 	 * Gets the quantity of edges of the specified vertex.
+	 * 
 	 * @param valueVertex The vertex to know its quantity of edges.
 	 * @return The quantity of edges of the specified vertex.
 	 */
@@ -171,34 +173,36 @@ public class GraphByMatrix<T extends Comparable<T>, E extends Comparable<E>> imp
 
 	/**
 	 * Gets the edges between two vertices.
+	 * 
 	 * @param vertexA The vertex "from" (origin of the edge)
 	 * @param vertexB The vertex "to" (where the edge ends)
 	 * @return The edges between two vertices specified.
 	 */
-	public ArrayList<Edge<E>> edgesBetween(T vertexA, T vertexB){
-		
-	ArrayList<Edge<E>> edges = new ArrayList<>();
-	
-	int indexA = getIndexVertex(vertexA);
-	int indexB = getIndexVertex(vertexB);
-	
-	for(int i = 0; i<adjMatrix.length; i++) {
-		
-		for (int j = 0; j < adjMatrix[0].length; j++) {
-			
-			edges = adjMatrix[indexA][indexB];
-			
+	public ArrayList<Edge<E>> edgesBetween(T vertexA, T vertexB) {
+
+		ArrayList<Edge<E>> edges = new ArrayList<>();
+
+		int indexA = getIndexVertex(vertexA);
+		int indexB = getIndexVertex(vertexB);
+
+		for (int i = 0; i < adjMatrix.length; i++) {
+
+			for (int j = 0; j < adjMatrix[0].length; j++) {
+
+				edges = adjMatrix[indexA][indexB];
+
+			}
+
 		}
-		
+
+		return edges;
+
 	}
-	
-	
-	return edges;
-		
-	}
-	
+
 	/**
-	 * Draw a graph with all connections Vertices-Edges. Including Directed and Undirected edges between all vertices.
+	 * Draw a graph with all connections Vertices-Edges. Including Directed and
+	 * Undirected edges between all vertices.
+	 * 
 	 * @return The graph like a string.
 	 */
 	public String graphToString() {

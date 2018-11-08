@@ -1,6 +1,8 @@
 package dataStructures;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Stack;
 
 public class GraphByLists<T extends Comparable<T>, E extends Comparable<E>> implements IGraph<T, E> {
 
@@ -171,6 +173,29 @@ public class GraphByLists<T extends Comparable<T>, E extends Comparable<E>> impl
 
 		return g;
 
+	}
+
+	private void DFS(int v, boolean visited[]) {
+
+	
+		
+
+	}
+	
+	public void DFS() {
+		
+
+	
+	}
+	
+	
+	public ArrayList<Vertex<T>> BFS(){
+		
+	ArrayList<Vertex<T>> bfs = new ArrayList<>();	
+	
+	
+	return bfs;
+		
 	}
 
 }
