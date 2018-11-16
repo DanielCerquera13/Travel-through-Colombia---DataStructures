@@ -18,7 +18,7 @@ public class GraphByLists<T extends Comparable<T>, E extends Comparable<E>> impl
 
 	}
 
-	private int getIndexVertex(T valueVertex) {
+	public int getIndexVertex(T valueVertex) {
 
 		int index = -1;
 

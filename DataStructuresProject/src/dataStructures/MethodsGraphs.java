@@ -16,10 +16,9 @@ public class MethodsGraphs <T extends Comparable<T>, E extends Comparable<E>>{
 	public ArrayList<Vertex<T>> DFS(GraphByMatrix<T, E> g, Vertex<T> v){
 		
 	ArrayList<Vertex<T>> vertices = g.getVertices();	
-	boolean[] visited = new boolean[g.getNumVertex()];
+	boolean[] visited = new boolean[g.getVertices().size()];
 	Stack<Vertex<T>> stack = new Stack<Vertex<T>>();
 	ArrayList<Vertex<T>> dfs = new ArrayList<>();
-	
 	
 	
 	

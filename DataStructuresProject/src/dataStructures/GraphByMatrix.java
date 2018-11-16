@@ -49,7 +49,7 @@ public class GraphByMatrix<T extends Comparable<T>, E extends Comparable<E>> imp
 	 * @param valueVertex The value of the vertex
 	 * @return The index where the vertex is saved in the vertices array.
 	 */
-	private int getIndexVertex(T valueVertex) {
+	public int getIndexVertex(T valueVertex) {
 
 		int index = -1;
 
