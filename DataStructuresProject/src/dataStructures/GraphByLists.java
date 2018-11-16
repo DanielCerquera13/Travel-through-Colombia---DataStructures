@@ -175,27 +175,4 @@ public class GraphByLists<T extends Comparable<T>, E extends Comparable<E>> impl
 
 	}
 
-	private void DFS(int v, boolean visited[]) {
-
-	
-		
-
-	}
-	
-	public void DFS() {
-		
-
-	
-	}
-	
-	
-	public ArrayList<Vertex<T>> BFS(){
-		
-	ArrayList<Vertex<T>> bfs = new ArrayList<>();	
-	
-	
-	return bfs;
-		
-	}
-
 }
