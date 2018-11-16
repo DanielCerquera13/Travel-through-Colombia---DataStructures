@@ -72,10 +72,13 @@ public class GraphByMatrix<T extends Comparable<T>, E extends Comparable<E>> imp
 		int d = getIndexVertex(destination);
 
 		if (directed) {
-			adjMatrix[f][d].add(new Edge<>(directed, cost, value));
+			adjMatrix[f][d].add(new Edge<E>(directed, cost, value));
+			vertices.get(f).getEdges().add(new Edge<E>(new Vertex<T>(from), new Vertex<T>(destination), cost, directed, value));
 		} else {
 			adjMatrix[f][d].add(new Edge<>(directed, cost, value));
 			adjMatrix[d][f].add(new Edge<>(directed, cost, value));
+			vertices.get(f).getEdges().add(new Edge<E>(new Vertex<T>(from), new Vertex<T>(destination), cost, directed, value));
+			vertices.get(d).getEdges().add(new Edge<E>(new Vertex<T>(destination), new Vertex<T>(from), cost, directed, value));
 		}
 	}
 
