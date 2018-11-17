@@ -1,6 +1,10 @@
 package dataStructures;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.*;
+
+import junit.framework.Assert;
 
 public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 
@@ -486,7 +490,7 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 //	private Vertex<T> find(ArrayList<Subset<T>> subsets, Vertex<T> x){
 //
 //
-//		
+//		if(subsets.get(getIndexSubset(subsets, parentValue, rankValue)))
 //		
 //	}
 	
@@ -554,11 +558,13 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 
 		MethodsGraphs<Integer, Integer> m = new MethodsGraphs<>();
 		
-				
-
+		ArrayList<Vertex<Integer>> v = new ArrayList<>();
 		
-		
-	
+		v.add(new Vertex<Integer>(trece));
+		v.add(new Vertex<Integer>(ocho));
+		v.add(new Vertex<Integer>(nueve));
+		v.add(new Vertex<Integer>(v1));
+		v.add(new Vertex<Integer>(cinco));		
 		
 
 	}

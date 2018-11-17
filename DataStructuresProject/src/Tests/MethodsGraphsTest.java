@@ -151,7 +151,7 @@ class MethodsGraphsTest {
     	System.out.println(vertex1);
     	
 		
-		assertEquals(vertex1.getValue(),mG.DFS(graphList, graphList.getVertices().get(0).getValue()));
+		assertEquals(vertex1.getValue(),mG.DFS(graphList, vertex1).get(0).getValue());
 		
 	}
 	
