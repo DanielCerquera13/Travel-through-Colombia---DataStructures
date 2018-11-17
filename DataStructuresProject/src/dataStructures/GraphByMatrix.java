@@ -208,7 +208,7 @@ public class GraphByMatrix<T extends Comparable<T>, E extends Comparable<E>> imp
 	@Override
 	public int getNumVertex() {
 
-		return numVertex;
+		return vertices.size();
 	}
 
 	public ArrayList<Edge<E>>[][] getAdjMatrix() {
