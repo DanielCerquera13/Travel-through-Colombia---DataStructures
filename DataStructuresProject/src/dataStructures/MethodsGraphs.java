@@ -472,64 +472,103 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 
 		for (int i = 0; i < subsets.size(); i++) {
 
-		
-			if(subsets.get(i).getParent().getValue() == parentValue && subsets.get(i).getRank().getValue() == rankValue) {
-				
+			if (subsets.get(i).getParent().getValue() == parentValue
+					&& subsets.get(i).getRank().getValue() == rankValue) {
+
 				index = i;
-				
+
 			}
-			
 
 		}
 
 		return index;
 
 	}
-	
-	
-//	private Vertex<T> find(ArrayList<Subset<T>> subsets, Vertex<T> x){
-//
-//
-//		if(subsets.get(getIndexSubset(subsets, parentValue, rankValue)))
-//		
-//	}
-	
-	
-//	private void union(ArrayList<Vertex<T>> tree,Vertex<T> x, Vertex<T> y) {
-//		
-//	Vertex<T> p = root(tree,x);
-//	Vertex<T> q = root(tree,y);
-//	tree.set(tree.indexOf(p), tree.get(tree.indexOf(q)));
-//		
-//		
-//	}
-//	
-//	
-//	
-//	private MST<T> kruskal(GraphByMatrix<T, E> g, MST<T> mst){
-//		
-//	
-//		
-//		
-//		
-//		
-//	}
-	
-//	public MST<T> kruskal(GraphByMatrix<T, E> g){
-//		
-//	ArrayList<Vertex<T>> tree = new ArrayList<>();
-//	double minCost = 0.0;
-//	
-//	MST<T> mst = new MST<>(tree, minCost);
-//	
-//	return kruskal(g, mst);
-//		
-//		
-//		
-//	}
-	
-	
 
+	private Vertex<T> find(ArrayList<Subset<T>> subsets, Vertex<T> x){
+
+	return x;	
+		
+	}
+
+	private void union(ArrayList<Vertex<T>> tree,Vertex<T> x, Vertex<T> y) {
+		
+
+		
+	}
+		
+	private MST<T> kruskal(GraphByMatrix<T, E> g, MST<T> mst){
+		
+	
+		
+	return mst;	
+		
+		
+	}
+
+	public MST<T> kruskal(GraphByMatrix<T, E> g){
+		
+	ArrayList<Vertex<T>> tree = new ArrayList<>();
+	double minCost = 0.0;
+	
+	MST<T> mst = new MST<>(tree, minCost);
+	
+	return kruskal(g, mst);
+		
+		
+		
+	}
+
+	private double minKey(double[] keys, boolean[] mstSet) {
+
+		double min = Double.MAX_VALUE;
+		double min_index = -1.0;
+
+		for (int i = 0; i < mstSet.length; i++) {
+
+			if (mstSet[i] == false && keys[i] < min) {
+
+				min = keys[i];
+				min_index = i;
+
+			}
+
+		}
+
+		return min_index;
+
+	}
+
+	private MST<T> prim(GraphByMatrix<T, E> g, Vertex<T> s, ArrayList<Vertex<T>> tree, MST<T> mst, boolean[] mstSet,
+			double[] keys, int[] parents) {
+
+		for (int i = 0; i < keys.length; i++) {
+
+			keys[i] = Double.MAX_VALUE;
+			mstSet[i] = false;
+
+		}
+
+		keys[0] = 0;
+		parents[0] = -1;
+
+		return mst;
+
+	}
+
+	public MST<T> prim(GraphByMatrix<T, E> g, Vertex<T> s) {
+
+		double minCost = 0.0;
+		ArrayList<Vertex<T>> tree = new ArrayList<>();
+
+		MST<T> mst = new MST<>(tree, minCost);
+		boolean[] mstSet = new boolean[g.getVertices().size()];
+		double[] keys = new double[g.getVertices().size()];
+		int[] parents = new int[g.getVertices().size()];
+
+		return prim(g, s, tree, mst, mstSet, keys, parents);
+
+	}
 
 	public static void main(String[] args) {
 
@@ -557,15 +596,14 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 		System.out.println(g.getVertices());
 
 		MethodsGraphs<Integer, Integer> m = new MethodsGraphs<>();
-		
+
 		ArrayList<Vertex<Integer>> v = new ArrayList<>();
-		
+
 		v.add(new Vertex<Integer>(trece));
 		v.add(new Vertex<Integer>(ocho));
 		v.add(new Vertex<Integer>(nueve));
 		v.add(new Vertex<Integer>(v1));
-		v.add(new Vertex<Integer>(cinco));		
-		
+		v.add(new Vertex<Integer>(cinco));
 
 	}
 
