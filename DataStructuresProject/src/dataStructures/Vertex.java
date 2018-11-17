@@ -41,5 +41,11 @@ public class Vertex<T extends Comparable<T>> implements Comparable<T> {
 		return value.toString();
 
 	}
+	
+	public boolean equals(Vertex<T> v) {
+		
+		return this.value == v.value;
+	}
+	
 
 }

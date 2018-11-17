@@ -462,6 +462,71 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 
 	}
 
+	private int getIndexSubset(ArrayList<Subset<T>> subsets, T parentValue, T rankValue) {
+
+		int index = -1;
+
+		for (int i = 0; i < subsets.size(); i++) {
+
+		
+			if(subsets.get(i).getParent().getValue() == parentValue && subsets.get(i).getRank().getValue() == rankValue) {
+				
+				index = i;
+				
+			}
+			
+
+		}
+
+		return index;
+
+	}
+	
+	
+//	private Vertex<T> find(ArrayList<Subset<T>> subsets, Vertex<T> x){
+//
+//
+//		
+//		
+//	}
+	
+	
+//	private void union(ArrayList<Vertex<T>> tree,Vertex<T> x, Vertex<T> y) {
+//		
+//	Vertex<T> p = root(tree,x);
+//	Vertex<T> q = root(tree,y);
+//	tree.set(tree.indexOf(p), tree.get(tree.indexOf(q)));
+//		
+//		
+//	}
+//	
+//	
+//	
+//	private MST<T> kruskal(GraphByMatrix<T, E> g, MST<T> mst){
+//		
+//	
+//		
+//		
+//		
+//		
+//	}
+	
+//	public MST<T> kruskal(GraphByMatrix<T, E> g){
+//		
+//	ArrayList<Vertex<T>> tree = new ArrayList<>();
+//	double minCost = 0.0;
+//	
+//	MST<T> mst = new MST<>(tree, minCost);
+//	
+//	return kruskal(g, mst);
+//		
+//		
+//		
+//	}
+	
+	
+
+
 	public static void main(String[] args) {
 
 		GraphByLists<Integer, Integer> g = new GraphByLists<>(5);
@@ -488,6 +553,13 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 		System.out.println(g.getVertices());
 
 		MethodsGraphs<Integer, Integer> m = new MethodsGraphs<>();
+		
+				
+
+		
+		
+	
+		
 
 	}
 
