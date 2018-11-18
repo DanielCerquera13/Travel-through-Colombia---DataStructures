@@ -72,13 +72,28 @@ public class GraphByMatrix<T extends Comparable<T>, E extends Comparable<E>> imp
 		int d = getIndexVertex(destination);
 
 		if (directed) {
+
 			adjMatrix[f][d].add(new Edge<E>(directed, cost, value));
 			vertices.get(f).getEdges().add(new Edge<E>(new Vertex<T>(from), new Vertex<T>(destination), cost, directed, value));
+
+			adjMatrix[f][d].add(new Edge<E>(new Vertex<T>(from), new Vertex<T>(destination), cost, directed, value));
+			vertices.get(f).getEdges()
+					.add(new Edge<E>(new Vertex<T>(from), new Vertex<T>(destination), cost, directed, value));
+
 		} else {
+
 			adjMatrix[f][d].add(new Edge<>(directed, cost, value));
 			adjMatrix[d][f].add(new Edge<>(directed, cost, value));
 			vertices.get(f).getEdges().add(new Edge<E>(new Vertex<T>(from), new Vertex<T>(destination), cost, directed, value));
 			vertices.get(d).getEdges().add(new Edge<E>(new Vertex<T>(destination), new Vertex<T>(from), cost, directed, value));
+
+			adjMatrix[f][d].add(new Edge<E>(new Vertex<T>(from), new Vertex<T>(destination), cost, directed, value));
+			adjMatrix[d][f].add(new Edge<E>(new Vertex<T>(destination), new Vertex<T>(from), cost, directed, value));
+			vertices.get(f).getEdges()
+					.add(new Edge<E>(new Vertex<T>(from), new Vertex<T>(destination), cost, directed, value));
+			vertices.get(d).getEdges()
+					.add(new Edge<E>(new Vertex<T>(destination), new Vertex<T>(from), cost, directed, value));
+
 		}
 	}
 
@@ -202,6 +217,28 @@ public class GraphByMatrix<T extends Comparable<T>, E extends Comparable<E>> imp
 
 	}
 
+	@Override
+	public int getNumVertex() {
+
+		return vertices.size();
+	}
+
+	public ArrayList<Edge<E>>[][] getAdjMatrix() {
+		return adjMatrix;
+	}
+
+	public void setAdjMatrix(ArrayList<Edge<E>>[][] adjMatrix) {
+		this.adjMatrix = adjMatrix;
+	}
+
+	public ArrayList<Vertex<T>> getVertices() {
+		return vertices;
+	}
+
+	public void setVertices(ArrayList<Vertex<T>> vertices) {
+		this.vertices = vertices;
+	}
+
 	/**
 	 * Draw a graph with all connections Vertices-Edges. Including Directed and
 	 * Undirected edges between all vertices.
@@ -237,26 +274,18 @@ public class GraphByMatrix<T extends Comparable<T>, E extends Comparable<E>> imp
 
 	}
 
-	@Override
-	public int getNumVertex() {
+	public ArrayList<Edge<E>> getEdges() {
 
-		return numVertex;
-	}
+		ArrayList<Edge<E>> edges = new ArrayList<>();
 
-	public ArrayList<Edge<E>>[][] getAdjMatrix() {
-		return adjMatrix;
-	}
+		for (int i = 0; i < vertices.size(); i++) {
 
-	public void setAdjMatrix(ArrayList<Edge<E>>[][] adjMatrix) {
-		this.adjMatrix = adjMatrix;
-	}
+			edges.addAll(getEdgesOfVertex(vertices.get(i).getValue()));
 
-	public ArrayList<Vertex<T>> getVertices() {
-		return vertices;
-	}
+		}
 
-	public void setVertices(ArrayList<Vertex<T>> vertices) {
-		this.vertices = vertices;
+		return edges;
+
 	}
 
 }

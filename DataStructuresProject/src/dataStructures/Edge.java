@@ -1,6 +1,6 @@
 package dataStructures;
 
-public class Edge<E extends Comparable<E>> implements Comparable<E> {
+public class Edge<E extends Comparable<E>> implements Comparable<Edge<E>> {
 
 	private E value;
 	private double cost;
@@ -17,13 +17,13 @@ public class Edge<E extends Comparable<E>> implements Comparable<E> {
 	}
 
 	public Edge(Vertex<?> from, Vertex<?> destination, double cost, boolean directed, E value) {
-	
+
 		this.from = from;
 		this.destination = destination;
 		this.value = value;
 		this.cost = cost;
 		this.directed = directed;
-	
+
 	}
 
 	public Vertex<?> getFrom() {
@@ -67,9 +67,22 @@ public class Edge<E extends Comparable<E>> implements Comparable<E> {
 	}
 
 	@Override
-	public int compareTo(E o) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int compareTo(Edge<E> e) {
+
+		int x = 0;
+
+		if (this.cost - e.cost < 0) {
+
+			x = -1;
+
+		} else if (this.cost - e.cost > 0) {
+
+			x = 1;
+
+		}
+
+		return x;
+
 	}
 
 	@Override
