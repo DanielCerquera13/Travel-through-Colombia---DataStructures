@@ -123,7 +123,7 @@ class MethodsGraphsTest {
 		
 	}
 	
-	//Test DFS for GraphByLists
+	//Test DFS for GraphByLists with the graph number one
 	@Test
 	public void testDFS() {
 		stageOne();
@@ -158,7 +158,45 @@ class MethodsGraphsTest {
 		
 	}
 	
-	//Test DFS for GraphByMatrix
+	
+	//Test DFS for GraphByLists with the graph number two
+		@Test
+		public void testDFSTwo() {
+			stageThree();
+			
+			ArrayList<Vertex<Integer>> arr= new ArrayList<>(); 
+			Integer v1=13;
+	    	Integer v2=8; 
+	    	Integer v3=9;
+	    	Integer v4=21;
+	    	Integer v5=5;
+	    	
+	    	
+	    	Vertex<Integer> vertex1 = new Vertex<>(v1);
+	    	Vertex<Integer> vertex2 = new Vertex<>(v2);
+	    	Vertex<Integer> vertex3 = new Vertex<>(v3);
+	    	Vertex<Integer> vertex4 = new Vertex<>(v4);
+	    	Vertex<Integer> vertex5 = new Vertex<>(v5);
+			
+	    	arr.add(vertex1);
+	    	arr.add(vertex2);
+	    	arr.add(vertex3);
+	    	arr.add(vertex4);
+	    	arr.add(vertex5);
+			
+	    	    	
+			
+			assertEquals(vertex1.getValue(),mG.DFS(graphList, vertex1).get(0).getValue());
+			assertEquals(vertex2.getValue(),mG.DFS(graphList, vertex1).get(1).getValue());
+			assertEquals(vertex3.getValue(),mG.DFS(graphList, vertex1).get(2).getValue());
+			assertEquals(vertex4.getValue(),mG.DFS(graphList, vertex1).get(3).getValue());
+			assertEquals(vertex5.getValue(),mG.DFS(graphList, vertex1).get(4).getValue());
+			
+		}
+		
+		
+	
+	//Test DFS for GraphByMatrix with the graph number one
 	@Test
 	public void testDFSMatrix() {
 		stageTwo();
@@ -194,9 +232,45 @@ class MethodsGraphsTest {
 		
 	}
 	
+	//Test DFS for GraphByMatrix with the graph number two
+		@Test
+		public void testDFSMatrixTwo() {
+			stageFour();
+			
+			ArrayList<Vertex<Integer>> arr= new ArrayList<>(); 
+			Integer v1=13;
+	    	Integer v2=8; 
+	    	Integer v3=9;
+	    	Integer v4=21;
+	    	Integer v5=5;
+	    	
+	    	
+	    	Vertex<Integer> vertex1 = new Vertex<>(v1);
+	    	Vertex<Integer> vertex2 = new Vertex<>(v2);
+	    	Vertex<Integer> vertex3 = new Vertex<>(v3);
+	    	Vertex<Integer> vertex4 = new Vertex<>(v4);
+	    	Vertex<Integer> vertex5 = new Vertex<>(v5);
+			
+	    	arr.add(vertex1);
+	    	arr.add(vertex2);
+	    	arr.add(vertex3);
+	    	arr.add(vertex4);
+	    	arr.add(vertex5);
+			
+	    	
+			
+			assertEquals(vertex1.getValue(), mG.DFS(graphMatrix, vertex1).get(0).getValue());
+			assertEquals(vertex2.getValue(), mG.DFS(graphMatrix, vertex1).get(1).getValue());
+			assertEquals(vertex3.getValue(), mG.DFS(graphMatrix, vertex1).get(2).getValue());
+			assertEquals(vertex4.getValue(), mG.DFS(graphMatrix, vertex1).get(3).getValue());
+			assertEquals(vertex5.getValue(), mG.DFS(graphMatrix, vertex1).get(4).getValue());
+			
+			
+		}
+		
 	
 	
-	//Test BFS for GraphByLists
+	//Test BFS for GraphByLists with the graph number one
 	@Test
 	public void testBFS() {
 		stageOne();
@@ -232,8 +306,43 @@ class MethodsGraphsTest {
 	}
 	
 	
+	//Test BFS for GraphByLists with the graph number two
+		@Test
+		public void testBFSTwo() {
+			stageThree();
+			
+			ArrayList<Vertex<Integer>> arr= new ArrayList<>(); 
+			Integer v1=13;
+	    	Integer v2=8; 
+	    	Integer v3=9;
+	    	Integer v4=21;
+	    	Integer v5=5;
+	    	
+	    	
+	    	Vertex<Integer> vertex1 = new Vertex<>(v1);
+	    	Vertex<Integer> vertex2 = new Vertex<>(v2);
+	    	Vertex<Integer> vertex3 = new Vertex<>(v3);
+	    	Vertex<Integer> vertex4 = new Vertex<>(v4);
+	    	Vertex<Integer> vertex5 = new Vertex<>(v5);
+			
+	    	arr.add(vertex1);
+	    	arr.add(vertex2);
+	    	arr.add(vertex4);
+	    	arr.add(vertex5);
+	    	arr.add(vertex3);
+			
+	    			
+			assertEquals(vertex1.getValue(),mG.BFS(graphList, vertex1).get(0).getValue());
+			assertEquals(vertex2.getValue(),mG.BFS(graphList, vertex1).get(1).getValue());
+			assertEquals(vertex4.getValue(),mG.BFS(graphList, vertex1).get(2).getValue());
+			assertEquals(vertex5.getValue(),mG.BFS(graphList, vertex1).get(3).getValue());
+			assertEquals(vertex3.getValue(),mG.BFS(graphList, vertex1).get(4).getValue());
+			
+			
+		}
 	
-	//Test BFS for GraphByMatrix
+	
+	//Test BFS for GraphByMatrix with the graph number one
 	@Test
 	public void testBFSMatrix() {
 		stageTwo();
@@ -270,7 +379,44 @@ class MethodsGraphsTest {
 		
 	}
 	
-	//Test Dijkstra for GraphByLists
+	//Test BFS for GraphByMatrix with the graph number two
+		@Test
+		public void testBFSMatrixTwo() {
+			stageFour();
+			
+			ArrayList<Vertex<Integer>> arr= new ArrayList<>(); 
+			Integer v1=13;
+	    	Integer v2=8; 
+	    	Integer v3=9;
+	    	Integer v4=21;
+	    	Integer v5=5;
+	    	
+	    	
+	    	Vertex<Integer> vertex1 = new Vertex<>(v1);
+	    	Vertex<Integer> vertex2 = new Vertex<>(v2);
+	    	Vertex<Integer> vertex3 = new Vertex<>(v3);
+	    	Vertex<Integer> vertex4 = new Vertex<>(v4);
+	    	Vertex<Integer> vertex5 = new Vertex<>(v5);
+			
+	    	arr.add(vertex1);
+	    	arr.add(vertex2);
+	    	arr.add(vertex4);
+	    	arr.add(vertex5);
+	    	arr.add(vertex3);
+			
+	    	
+	    			
+			assertEquals(vertex1.getValue(),mG.BFS(graphMatrix, vertex1).get(0).getValue());
+			assertEquals(vertex2.getValue(),mG.BFS(graphMatrix, vertex1).get(1).getValue());
+			assertEquals(vertex4.getValue(),mG.BFS(graphMatrix, vertex1).get(2).getValue());
+			assertEquals(vertex5.getValue(),mG.BFS(graphMatrix, vertex1).get(3).getValue());
+			assertEquals(vertex3.getValue(),mG.BFS(graphMatrix, vertex1).get(4).getValue());
+			
+			
+			
+		}
+	
+	//Test Dijkstra for GraphByLists with the graph number one
 	@Test
 	public void testDijkstra() {
 		stageOne();
@@ -304,7 +450,42 @@ class MethodsGraphsTest {
 		
 	}
 	
-	//Test Dijkstra for GraphByMatrix
+	
+	//Test Dijkstra for GraphByLists with the graph number two
+		@Test
+		public void testDijkstraTwo() {
+			stageThree();
+			
+
+			ArrayList<Vertex<Double>> arr= new ArrayList<>(); 
+			double v1=0.0;
+	    	double v2=5.0; 
+	    	double v3=6.0;
+	    	double v4=4.0;
+	    	double v5=2.0;
+	    	
+	    	Integer ve1=13;
+	    	    	
+	    	Vertex<Integer> vert1 = new Vertex<>(ve1);
+	    	   	
+	    	   
+	    	
+	    	
+	    	assertEquals(v1, mG.Dijkstra(graphList, vert1)[0]);
+	    	assertEquals(v2, mG.Dijkstra(graphList, vert1)[1]);
+	    	assertEquals(v3, mG.Dijkstra(graphList, vert1)[2]);
+	    	assertEquals(v4, mG.Dijkstra(graphList, vert1)[3]);
+	    	assertEquals(v5, mG.Dijkstra(graphList, vert1)[4]);
+
+			
+			
+	    	
+			
+			
+			
+		}
+	
+	//Test Dijkstra for GraphByMatrix with the graph number one
 	@Test
 	public void testDijkstraMatrix() {
 		stageTwo();
@@ -332,7 +513,36 @@ class MethodsGraphsTest {
 		
 	}
 	
-	//Test floydWarshall for GraphByLists
+	
+	//Test Dijkstra for GraphByMatrix with the graph number two
+		@Test
+		public void testDijkstraMatrixTwo() {
+			stageFour();
+			
+			ArrayList<Vertex<Double>> arr= new ArrayList<>(); 
+			double v1=0.0;
+	    	double v2=5.0; 
+	    	double v3=6.0;
+	    	double v4=4.0;
+	    	double v5=2.0;
+	    	
+	    	Integer ve1=13;
+	    	    	
+	    	Vertex<Integer> vert1 = new Vertex<>(ve1);
+	    	   	
+	    	   
+	    	
+	    	
+	    	assertEquals(v1, mG.Dijkstra(graphMatrix, vert1)[0]);
+	    	assertEquals(v2, mG.Dijkstra(graphMatrix, vert1)[1]);
+	    	assertEquals(v3, mG.Dijkstra(graphMatrix, vert1)[2]);
+	    	assertEquals(v4, mG.Dijkstra(graphMatrix, vert1)[3]);
+	    	assertEquals(v5, mG.Dijkstra(graphMatrix, vert1)[4]);
+			
+			
+		}
+	
+	//Test floydWarshall for GraphByLists with the graph number one
 	@Test
 	public void testFloydWarshall() {
 		stageOne();
@@ -357,7 +567,31 @@ class MethodsGraphsTest {
 	}
 	
 	
-	//Test floydWarshall for GraphByMatrix
+	//Test floydWarshall for GraphByLists with the graph number two
+		@Test
+		public void testFloydWarshallTwo() {
+			stageThree();
+			
+			String fila1=(Arrays.toString(mG.floydWarshall(graphList)[0]));
+			String fila2=(Arrays.toString(mG.floydWarshall(graphList)[1]));
+			String fila3=(Arrays.toString(mG.floydWarshall(graphList)[2]));
+			String fila4=(Arrays.toString(mG.floydWarshall(graphList)[3]));
+			String fila5=(Arrays.toString(mG.floydWarshall(graphList)[4]));
+			
+			String a=Arrays.toString(mG.Dijkstra(graphList, new Vertex<Integer>(13)));
+			String b=Arrays.toString(mG.Dijkstra(graphList, new Vertex<Integer>(8)));
+			String c=Arrays.toString(mG.Dijkstra(graphList, new Vertex<Integer>(9)));
+			String d=Arrays.toString(mG.Dijkstra(graphList, new Vertex<Integer>(21)));
+			String e=Arrays.toString(mG.Dijkstra(graphList, new Vertex<Integer>(5)));
+			
+			assertEquals(fila1, a);
+			assertEquals(fila2, b);
+			assertEquals(fila3, c);
+			assertEquals(fila4, d);
+			assertEquals(fila5, e);
+		}
+	
+	//Test floydWarshall for GraphByMatrix with the graph number one
 		@Test
 		public void testFloydWarshallMatrix() {
 			stageTwo();
@@ -380,6 +614,30 @@ class MethodsGraphsTest {
 			assertEquals(fila4, d);
 			assertEquals(fila5, e);
 		}
+		
+		//Test floydWarshall for GraphByMatrix with the graph number one
+				@Test
+				public void testFloydWarshallMatrixTwo() {
+					stageFour();
+					
+					String fila1=(Arrays.toString(mG.floydWarshall(graphMatrix)[0]));
+					String fila2=(Arrays.toString(mG.floydWarshall(graphMatrix)[1]));
+					String fila3=(Arrays.toString(mG.floydWarshall(graphMatrix)[2]));
+					String fila4=(Arrays.toString(mG.floydWarshall(graphMatrix)[3]));
+					String fila5=(Arrays.toString(mG.floydWarshall(graphMatrix)[4]));
+					
+					String a=Arrays.toString(mG.Dijkstra(graphMatrix, new Vertex<Integer>(13)));
+					String b=Arrays.toString(mG.Dijkstra(graphMatrix, new Vertex<Integer>(8)));
+					String c=Arrays.toString(mG.Dijkstra(graphMatrix, new Vertex<Integer>(9)));
+					String d=Arrays.toString(mG.Dijkstra(graphMatrix, new Vertex<Integer>(21)));
+					String e=Arrays.toString(mG.Dijkstra(graphMatrix, new Vertex<Integer>(5)));
+					
+					assertEquals(fila1, a);
+					assertEquals(fila2, b);
+					assertEquals(fila3, c);
+					assertEquals(fila4, d);
+					assertEquals(fila5, e);
+				}
 		
 	
 	
