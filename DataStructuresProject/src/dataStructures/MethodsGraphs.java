@@ -136,7 +136,7 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 	}
 
 	// BFS by graph by Matrix.
-	public ArrayList<Vertex<T>> BFS(GraphByLists<T, E> g, Vertex<T> v) {
+	public ArrayList<Vertex<T>> BFS(GraphByMatrix<T, E> g, Vertex<T> v) {
 
 		boolean[] visited = new boolean[g.getVertices().size()];
 		Queue<Vertex<T>> queue = new LinkedList<Vertex<T>>();
@@ -177,7 +177,7 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 	}
 
 	// BFS by graph by lists.
-	public ArrayList<Vertex<T>> BFS(GraphByMatrix<T, E> g, Vertex<T> v) {
+	public ArrayList<Vertex<T>> BFS(GraphByLists<T, E> g, Vertex<T> v) {
 
 		boolean[] visited = new boolean[g.getVertices().size()];
 		Queue<Vertex<T>> queue = new LinkedList<Vertex<T>>();
@@ -583,7 +583,6 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 		System.out.println(g.getVertices());
 
 		MethodsGraphs<Integer, Integer> m = new MethodsGraphs<>();
-		
 
 	}
 
