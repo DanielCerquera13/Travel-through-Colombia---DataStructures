@@ -2,23 +2,23 @@ package dataStructures;
 
 import java.util.ArrayList;
 
-public class MST<T extends Comparable<T>> {
+public class MST<E extends Comparable<E>> {
 
-	private ArrayList<Vertex<T>> tree;
+	private ArrayList<Edge<E>> tree;
 	private double minCost;
 
-	public MST(ArrayList<Vertex<T>> tree, double minCost) {
+	public MST(ArrayList<Edge<E>> tree, double minCost) {
 
 		tree = new ArrayList<>();
 		this.minCost = minCost;
 
 	}
 
-	public ArrayList<Vertex<T>> getTree() {
+	public ArrayList<Edge<E>> getTree() {
 		return tree;
 	}
 
-	public void setVertices(ArrayList<Vertex<T>> tree) {
+	public void setVertices(ArrayList<Edge<E>> tree) {
 		this.tree = tree;
 	}
 

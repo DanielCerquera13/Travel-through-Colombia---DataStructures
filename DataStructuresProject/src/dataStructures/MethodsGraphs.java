@@ -1,10 +1,6 @@
 package dataStructures;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.*;
-
-import junit.framework.Assert;
 
 public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 
@@ -35,6 +31,8 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 
 			if (visited[g
 					.getIndexVertex((T) vertices.get(index).getEdges().get(i).getDestination().getValue())] == false) {
+
+				System.out.println((T) vertices.get(index).getEdges().get(i).getDestination().getValue());
 
 				return DFS(g, (Vertex<T>) vertices.get(index).getEdges().get(i).getDestination(), visited, stack, dfs);
 
@@ -466,57 +464,46 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 
 	}
 
-	private int getIndexSubset(ArrayList<Subset<T>> subsets, T parentValue, T rankValue) {
+	private MST<E> kruskal(GraphByMatrix<T, E> g, MST<E> mst, ArrayList<Vertex<T>> vertices, ArrayList<Edge<E>> edges) {
 
-		int index = -1;
+		double krus = 0.0;
 
-		for (int i = 0; i < subsets.size(); i++) {
+		DisjoinSet<T> disjoinSet = new DisjoinSet<>(vertices);
+		Collections.sort(edges);
+		System.out.println(edges);
+		System.out.println(edges.get(0).getFrom().getValue());
 
-			if (subsets.get(i).getParent().getValue() == parentValue
-					&& subsets.get(i).getRank().getValue() == rankValue) {
+		for (Edge<E> edge : edges) {
 
-				index = i;
+			Vertex<T> u = (Vertex<T>) edge.getFrom();
+			Vertex<T> v = (Vertex<T>) edge.getDestination();
+
+			if (u != null && v != null) {
+				if (disjoinSet.find(u.getNode()) != disjoinSet.find(v.getNode())) {
+					mst.getTree().add(edge);
+					disjoinSet.union(u.getNode(), v.getNode());
+					krus = krus + edge.getCost();
+				}
 
 			}
-
 		}
+		mst.setMinCost(krus);
 
-		return index;
+		return mst;
 
 	}
 
-	private Vertex<T> find(ArrayList<Subset<T>> subsets, Vertex<T> x){
+	public MST<E> kruskal(GraphByMatrix<T, E> g) {
 
-	return x;	
-		
-	}
+		ArrayList<Edge<E>> tree = new ArrayList<>();
+		double minCost = 0.0;
+		ArrayList<Vertex<T>> vertices = g.getVertices();
+		ArrayList<Edge<E>> edges = g.getEdges();
 
-	private void union(ArrayList<Vertex<T>> tree,Vertex<T> x, Vertex<T> y) {
-		
+		MST<E> mst = new MST<>(tree, minCost);
 
-		
-	}
-		
-	private MST<T> kruskal(GraphByMatrix<T, E> g, MST<T> mst){
-		
-	
-		
-	return mst;	
-		
-		
-	}
+		return kruskal(g, mst, vertices, edges);
 
-	public MST<T> kruskal(GraphByMatrix<T, E> g){
-		
-	ArrayList<Vertex<T>> tree = new ArrayList<>();
-	double minCost = 0.0;
-	
-	MST<T> mst = new MST<>(tree, minCost);
-	
-	return kruskal(g, mst);
-		
-		
-		
 	}
 
 	private double minKey(double[] keys, boolean[] mstSet) {
@@ -556,23 +543,23 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 
 	}
 
-	public MST<T> prim(GraphByMatrix<T, E> g, Vertex<T> s) {
-
-		double minCost = 0.0;
-		ArrayList<Vertex<T>> tree = new ArrayList<>();
-
-		MST<T> mst = new MST<>(tree, minCost);
-		boolean[] mstSet = new boolean[g.getVertices().size()];
-		double[] keys = new double[g.getVertices().size()];
-		int[] parents = new int[g.getVertices().size()];
-
-		return prim(g, s, tree, mst, mstSet, keys, parents);
-
-	}
+//	public MST<T> prim(GraphByMatrix<T, E> g, Vertex<T> s) {
+//
+//		double minCost = 0.0;
+//		ArrayList<Vertex<T>> tree = new ArrayList<>();
+//
+//		MST<T> mst = new MST<>(tree, minCost);
+//		boolean[] mstSet = new boolean[g.getVertices().size()];
+//		double[] keys = new double[g.getVertices().size()];
+//		int[] parents = new int[g.getVertices().size()];
+//
+//		return prim(g, s, tree, mst, mstSet, keys, parents);
+//
+//	}
 
 	public static void main(String[] args) {
 
-		GraphByLists<Integer, Integer> g = new GraphByLists<>(5);
+		GraphByMatrix<Integer, Integer> g = new GraphByMatrix<>(5);
 
 		Integer trece = 13;
 		Integer ocho = 8;
@@ -596,14 +583,7 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 		System.out.println(g.getVertices());
 
 		MethodsGraphs<Integer, Integer> m = new MethodsGraphs<>();
-
-		ArrayList<Vertex<Integer>> v = new ArrayList<>();
-
-		v.add(new Vertex<Integer>(trece));
-		v.add(new Vertex<Integer>(ocho));
-		v.add(new Vertex<Integer>(nueve));
-		v.add(new Vertex<Integer>(v1));
-		v.add(new Vertex<Integer>(cinco));
+		
 
 	}
 

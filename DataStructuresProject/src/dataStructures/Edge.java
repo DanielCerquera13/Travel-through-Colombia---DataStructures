@@ -69,7 +69,19 @@ public class Edge<E extends Comparable<E>> implements Comparable<Edge<E>> {
 	@Override
 	public int compareTo(Edge<E> e) {
 
-		return Integer.parseInt(String.valueOf(this.cost - e.cost));
+		int x = 0;
+
+		if (this.cost - e.cost < 0) {
+
+			x = -1;
+
+		} else if (this.cost - e.cost > 0) {
+
+			x = 1;
+
+		}
+
+		return x;
 
 	}
 
