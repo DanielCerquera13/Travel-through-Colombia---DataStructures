@@ -6,7 +6,6 @@ public class Vertex<T extends Comparable<T>> implements Comparable<Vertex<T>> {
 
 	private T value;
 	private ArrayList<Edge<?>> edges;
-	private NodeMST node;
 
 	public Vertex(T value) {
 
@@ -36,14 +35,6 @@ public class Vertex<T extends Comparable<T>> implements Comparable<Vertex<T>> {
 
 		return value.toString();
 
-	}
-
-	public NodeMST getNode() {
-		return node;
-	}
-
-	public void setNode(NodeMST node) {
-		this.node = node;
 	}
 
 	public boolean equals(Vertex<T> v) {

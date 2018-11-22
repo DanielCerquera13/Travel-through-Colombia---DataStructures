@@ -464,102 +464,10 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 
 	}
 
-	private MST<E> kruskal(GraphByMatrix<T, E> g, MST<E> mst, ArrayList<Vertex<T>> vertices, ArrayList<Edge<E>> edges) {
-
-		double krus = 0.0;
-
-		DisjoinSet<T> disjoinSet = new DisjoinSet<>(vertices);
-		Collections.sort(edges);
-		System.out.println(edges);
-		System.out.println(edges.get(0).getFrom().getValue());
-
-		for (Edge<E> edge : edges) {
-
-			Vertex<T> u = (Vertex<T>) edge.getFrom();
-			Vertex<T> v = (Vertex<T>) edge.getDestination();
-
-			if (u != null && v != null) {
-				if (disjoinSet.find(u.getNode()) != disjoinSet.find(v.getNode())) {
-					mst.getTree().add(edge);
-					disjoinSet.union(u.getNode(), v.getNode());
-					krus = krus + edge.getCost();
-				}
-
-			}
-		}
-		mst.setMinCost(krus);
-
-		return mst;
-
-	}
-
-	public MST<E> kruskal(GraphByMatrix<T, E> g) {
-
-		ArrayList<Edge<E>> tree = new ArrayList<>();
-		double minCost = 0.0;
-		ArrayList<Vertex<T>> vertices = g.getVertices();
-		ArrayList<Edge<E>> edges = g.getEdges();
-
-		MST<E> mst = new MST<>(tree, minCost);
-
-		return kruskal(g, mst, vertices, edges);
-
-	}
-
-	private double minKey(double[] keys, boolean[] mstSet) {
-
-		double min = Double.MAX_VALUE;
-		double min_index = -1.0;
-
-		for (int i = 0; i < mstSet.length; i++) {
-
-			if (mstSet[i] == false && keys[i] < min) {
-
-				min = keys[i];
-				min_index = i;
-
-			}
-
-		}
-
-		return min_index;
-
-	}
-
-	private MST<T> prim(GraphByMatrix<T, E> g, Vertex<T> s, ArrayList<Vertex<T>> tree, MST<T> mst, boolean[] mstSet,
-			double[] keys, int[] parents) {
-
-		for (int i = 0; i < keys.length; i++) {
-
-			keys[i] = Double.MAX_VALUE;
-			mstSet[i] = false;
-
-		}
-
-		keys[0] = 0;
-		parents[0] = -1;
-
-		return mst;
-
-	}
-
-//	public MST<T> prim(GraphByMatrix<T, E> g, Vertex<T> s) {
-//
-//		double minCost = 0.0;
-//		ArrayList<Vertex<T>> tree = new ArrayList<>();
-//
-//		MST<T> mst = new MST<>(tree, minCost);
-//		boolean[] mstSet = new boolean[g.getVertices().size()];
-//		double[] keys = new double[g.getVertices().size()];
-//		int[] parents = new int[g.getVertices().size()];
-//
-//		return prim(g, s, tree, mst, mstSet, keys, parents);
-//
-//	}
-
 	public static void main(String[] args) {
 
 		GraphByMatrix<Integer, Integer> g = new GraphByMatrix<>(5);
+		MethodsGraphs<Integer, Integer> m = new MethodsGraphs<>();
 
 		Integer trece = 13;
 		Integer ocho = 8;
@@ -582,7 +490,59 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 
 		System.out.println(g.getVertices());
 
-		MethodsGraphs<Integer, Integer> m = new MethodsGraphs<>();
+		GraphByLists<String, Integer> p = new GraphByLists<>(7);
+
+		String a = "newark";
+		String b = "Woodbridge";
+		String c = "Trenton";
+		String d = "Asbury";
+		String e = "Atlantic";
+		String f = "Camden";
+		String h = "Cape";
+
+		p.addVertex(a);
+		p.addVertex(b);
+		p.addVertex(c);
+		p.addVertex(d);
+		p.addVertex(e);
+		p.addVertex(f);
+		p.addVertex(h);
+
+		p.addEdge(a, b, false, 3.75, 0);
+		p.addEdge(b, d, false, 11.25, 0);
+		p.addEdge(b, c, false, 4.25, 0);
+		p.addEdge(b, f, false, 13.5, 0);
+		p.addEdge(c, d, false, 14.75, 0);
+		p.addEdge(c, f, false, 3.4, 0);
+		p.addEdge(f, e, false, 4.5, 0);
+		p.addEdge(f, h, false, 12.5, 0);
+		p.addEdge(d, e, false, 13.5, 0);
+		p.addEdge(e, h, false, 8.5, 0);
+
+		GraphByMatrix<Integer, Integer> floyd = new GraphByMatrix<>(5);
+
+		Integer zero = 0;
+		Integer one = 1;
+		Integer two = 2;
+		Integer three = 3;
+		Integer four = 4;
+
+		floyd.addVertex(zero);
+		floyd.addVertex(one);
+		floyd.addVertex(two);
+		floyd.addVertex(three);
+		floyd.addVertex(four);
+
+		floyd.addEdge(zero, one, false, 100, 0);
+		floyd.addEdge(zero, two, false, 200, 0);
+		floyd.addEdge(zero, three, false, 96, 0);
+		floyd.addEdge(zero, four, false, 25, 0);
+		floyd.addEdge(one, two, false, 78, 0);
+		floyd.addEdge(one, three, false, 87, 0);
+		floyd.addEdge(four, two, false, 85, 0);
+		floyd.addEdge(four, three, false, 312, 0);
+
+		System.out.println(Arrays.deepToString(m.floydWarshall(floyd)));
 
 	}
 
