@@ -6,6 +6,7 @@ public class GraphByMatrix<T extends Comparable<T>, E extends Comparable<E>> imp
 
 	private ArrayList<Edge<E>>[][] adjMatrix;
 	private ArrayList<Vertex<T>> vertices;
+	private ArrayList<Edge<E>> edges;
 	private int numVertex;
 
 	/**
@@ -19,6 +20,7 @@ public class GraphByMatrix<T extends Comparable<T>, E extends Comparable<E>> imp
 
 		vertices = new ArrayList<Vertex<T>>();
 		adjMatrix = new ArrayList[numVertex][numVertex];
+		edges = new ArrayList<>();
 
 		initMatrix();
 
@@ -39,6 +41,10 @@ public class GraphByMatrix<T extends Comparable<T>, E extends Comparable<E>> imp
 
 		}
 
+	}
+
+	public void setEdges(ArrayList<Edge<E>> edges) {
+		this.edges = edges;
 	}
 
 	/**
@@ -75,6 +81,8 @@ public class GraphByMatrix<T extends Comparable<T>, E extends Comparable<E>> imp
 			adjMatrix[f][d].add(new Edge<E>(new Vertex<T>(from), new Vertex<T>(destination), cost, directed, value));
 			vertices.get(f).getEdges()
 					.add(new Edge<E>(new Vertex<T>(from), new Vertex<T>(destination), cost, directed, value));
+			edges.add(new Edge<E>(new Vertex<T>(from), new Vertex<T>(destination), cost, directed, value));
+
 		} else {
 			adjMatrix[f][d].add(new Edge<E>(new Vertex<T>(from), new Vertex<T>(destination), cost, directed, value));
 			adjMatrix[d][f].add(new Edge<E>(new Vertex<T>(destination), new Vertex<T>(from), cost, directed, value));
@@ -82,6 +90,7 @@ public class GraphByMatrix<T extends Comparable<T>, E extends Comparable<E>> imp
 					.add(new Edge<E>(new Vertex<T>(from), new Vertex<T>(destination), cost, directed, value));
 			vertices.get(d).getEdges()
 					.add(new Edge<E>(new Vertex<T>(destination), new Vertex<T>(from), cost, directed, value));
+			edges.add(new Edge<E>(new Vertex<T>(from), new Vertex<T>(destination), cost, directed, value));
 		}
 	}
 
@@ -263,17 +272,7 @@ public class GraphByMatrix<T extends Comparable<T>, E extends Comparable<E>> imp
 	}
 
 	public ArrayList<Edge<E>> getEdges() {
-
-		ArrayList<Edge<E>> edges = new ArrayList<>();
-
-		for (int i = 0; i < vertices.size(); i++) {
-
-			edges.addAll(getEdgesOfVertex(vertices.get(i).getValue()));
-
-		}
-
 		return edges;
-
 	}
 
 }

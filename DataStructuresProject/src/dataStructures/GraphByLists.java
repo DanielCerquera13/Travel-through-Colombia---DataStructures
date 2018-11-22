@@ -57,7 +57,6 @@ public class GraphByLists<T extends Comparable<T>, E extends Comparable<E>> impl
 			vertices.get(d).getEdges()
 					.add(new Edge<E>(new Vertex<T>(destination), new Vertex<T>(from), cost, directed, value));
 			edges.add(new Edge<E>(new Vertex<T>(from), new Vertex<T>(destination), cost, directed, value));
-			edges.add(new Edge<E>(new Vertex<T>(destination), new Vertex<T>(from), cost, directed, value));
 
 		}
 

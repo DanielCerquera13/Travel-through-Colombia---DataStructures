@@ -464,85 +464,410 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 
 	}
 
+	private int disjoinAuxVertex(int[] disjoin, int pos) {
+
+		if (disjoin[pos] < 0) {
+
+			return pos;
+
+		} else {
+
+			return disjoinAuxVertex(disjoin, disjoin[pos]);
+
+		}
+
+	}
+
+	private double kruskal(GraphByMatrix<T, E> g, int[] disjoin, ArrayList<Edge<E>> edges) {
+
+		double minCost = 0.0;
+		int edgesValidate = 0;
+
+		for (int i = 0; i < disjoin.length; i++) {
+
+			disjoin[i] = -1;
+
+		}
+
+		while (edgesValidate != g.getVertices().size() - 1) {
+
+			Edge<E> aux = edges.remove(0);
+
+			Vertex<T> ini = (Vertex<T>) aux.getFrom();
+			Vertex<T> dest = (Vertex<T>) aux.getDestination();
+
+			int posIni = g.getIndexVertex(ini.getValue());
+			int posDest = g.getIndexVertex(dest.getValue());
+
+			if ((disjoin[posIni] < 0) && (disjoin[posDest] < 0)) {
+
+				disjoin[posDest] += disjoin[posIni];
+				disjoin[posIni] = posDest;
+				minCost += aux.getCost();
+				edgesValidate++;
+
+			} else {
+
+				int disjoinFrom = disjoinAuxVertex(disjoin, posIni);
+				int disjoinTo = disjoinAuxVertex(disjoin, posDest);
+
+				if (disjoinFrom != disjoinTo) {
+
+					int valueFrom = disjoin[disjoinFrom];
+//					int valueTo = disjoin[disjoinTo];
+
+					disjoin[disjoinTo] += valueFrom;
+					disjoin[disjoinFrom] = disjoinTo;
+
+					minCost += aux.getCost();
+					edgesValidate++;
+
+				}
+
+			}
+
+		}
+
+		return minCost;
+
+	}
+
+	public double kruskal(GraphByMatrix<T, E> g) {
+
+		ArrayList<Edge<E>> edges = g.getEdges();
+		int[] disjoin = new int[g.getVertices().size()];
+		Collections.sort(edges);
+
+		return kruskal(g, disjoin, edges);
+
+	}
+
+	private double kruskal(GraphByLists<T, E> g, int[] disjoin, ArrayList<Edge<E>> edges) {
+
+		double minCost = 0.0;
+		int edgesValidate = 0;
+
+		for (int i = 0; i < disjoin.length; i++) {
+
+			disjoin[i] = -1;
+
+		}
+
+		while (edgesValidate != g.getVertices().size() - 1) {
+
+			Edge<E> aux = edges.remove(0);
+
+			Vertex<T> ini = (Vertex<T>) aux.getFrom();
+			Vertex<T> dest = (Vertex<T>) aux.getDestination();
+
+			int posIni = g.getIndexVertex(ini.getValue());
+			int posDest = g.getIndexVertex(dest.getValue());
+
+			if ((disjoin[posIni] < 0) && (disjoin[posDest] < 0)) {
+
+				disjoin[posDest] += disjoin[posIni];
+				disjoin[posIni] = posDest;
+				minCost += aux.getCost();
+				edgesValidate++;
+
+			} else {
+
+				int disjoinFrom = disjoinAuxVertex(disjoin, posIni);
+				int disjoinTo = disjoinAuxVertex(disjoin, posDest);
+
+				if (disjoinFrom != disjoinTo) {
+
+					int valueFrom = disjoin[disjoinFrom];
+//					int valueTo = disjoin[disjoinTo];
+
+					disjoin[disjoinTo] += valueFrom;
+					disjoin[disjoinFrom] = disjoinTo;
+
+					minCost += aux.getCost();
+					edgesValidate++;
+
+				}
+
+			}
+
+		}
+
+		return minCost;
+
+	}
+
+	public double kruskal(GraphByLists<T, E> g) {
+
+		ArrayList<Edge<E>> edges = g.getEdges();
+		int[] disjoin = new int[g.getVertices().size()];
+		Collections.sort(edges);
+
+		return kruskal(g, disjoin, edges);
+
+	}
+
+	private int indexMinimumCost(double[] costs, boolean[] visited) {
+
+		int indexAux = 0;
+		double[] costsCopy = new double[costs.length];
+
+		for (int i = 0; i < costs.length; i++) {
+
+			costsCopy[i] = costs[i];
+
+		}
+
+		for (int i = 0; i < visited.length; i++) {
+
+			if (visited[i]) {
+
+				costsCopy[i] = Integer.MAX_VALUE;
+
+			}
+
+		}
+
+		double min = costsCopy[0];
+		for (int i = 1; i < costs.length; i++) {
+
+			if (costsCopy[i] < min) {
+
+				min = costsCopy[i];
+				indexAux = i;
+
+			}
+
+		}
+
+		return indexAux;
+
+	}
+
+	private double prim(GraphByMatrix<T, E> g, Vertex<T> ini, ArrayList<Vertex<T>> vertices, boolean[] visited,
+			double[] costs, int[] paths, int visits, int start, double cost, int initial) {
+
+		if (visits == vertices.size()) {
+
+			for (int i = 0; i < costs.length; i++) {
+
+				if (i != initial) {
+					cost += costs[i];
+				}
+
+			}
+
+			return cost;
+
+		}
+
+		visited[start] = true;
+		visits += 1;
+
+		for (int i = 0; i < paths.length; i++) {
+
+			paths[i] = -1;
+
+		}
+
+		Vertex<T> actual = ini;
+
+		if (visits <= vertices.size()) {
+
+			int indexActual = g.getIndexVertex(actual.getValue());
+
+			for (int i = 0; i < actual.getEdges().size(); i++) {
+
+				if (!visited[g.getIndexVertex((T) actual.getEdges().get(i).getDestination().getValue())]) {
+
+					if (costs[g.getIndexVertex((T) actual.getEdges().get(i).getDestination().getValue())] > actual
+							.getEdges().get(i).getCost()) {
+
+						costs[g.getIndexVertex((T) actual.getEdges().get(i).getDestination().getValue())] = actual
+								.getEdges().get(i).getCost();
+						paths[g.getIndexVertex((T) actual.getEdges().get(i).getDestination().getValue())] = indexActual;
+
+					}
+
+				}
+
+			}
+
+			int min = indexMinimumCost(costs, visited);
+			ini = g.getVertices().get(min);
+			start = min;
+
+			return prim(g, ini, vertices, visited, costs, paths, visits, start, cost, initial);
+
+		}
+
+		return 0.1;
+
+	}
+
+	public double prim(GraphByMatrix<T, E> g, Vertex<T> ini) {
+
+		ArrayList<Vertex<T>> vertices = g.getVertices();
+		boolean[] visited = new boolean[vertices.size()];
+		double[] costs = new double[vertices.size()];
+		int[] paths = new int[vertices.size()];
+		int visits = 0;
+		int start = g.getIndexVertex(ini.getValue());
+		double cost = 0.0;
+		int initial = start;
+
+		// Refill costs
+		for (int i = 0; i < costs.length; i++) {
+
+			if (i != start) {
+				costs[i] = Integer.MAX_VALUE;
+			}
+
+		}
+
+		return prim(g, ini, vertices, visited, costs, paths, visits, start, cost, initial);
+
+	}
+
+	private double prim(GraphByLists<T, E> g, Vertex<T> ini, ArrayList<Vertex<T>> vertices, boolean[] visited,
+			double[] costs, int[] paths, int visits, int start, double cost, int initial) {
+
+		if (visits == vertices.size()) {
+
+			for (int i = 0; i < costs.length; i++) {
+
+				if (i != initial) {
+					cost += costs[i];
+				}
+
+			}
+
+			return cost;
+
+		}
+
+		visited[start] = true;
+		visits += 1;
+
+		for (int i = 0; i < paths.length; i++) {
+
+			paths[i] = -1;
+
+		}
+
+		Vertex<T> actual = ini;
+
+		if (visits <= vertices.size()) {
+
+			int indexActual = g.getIndexVertex(actual.getValue());
+
+			for (int i = 0; i < actual.getEdges().size(); i++) {
+
+				if (!visited[g.getIndexVertex((T) actual.getEdges().get(i).getDestination().getValue())]) {
+
+					if (costs[g.getIndexVertex((T) actual.getEdges().get(i).getDestination().getValue())] > actual
+							.getEdges().get(i).getCost()) {
+
+						costs[g.getIndexVertex((T) actual.getEdges().get(i).getDestination().getValue())] = actual
+								.getEdges().get(i).getCost();
+						paths[g.getIndexVertex((T) actual.getEdges().get(i).getDestination().getValue())] = indexActual;
+					}
+
+				}
+
+			}
+
+			int min = indexMinimumCost(costs, visited);
+			ini = g.getVertices().get(min);
+			start = min;
+
+			return prim(g, ini, vertices, visited, costs, paths, visits, start, cost, initial);
+
+		}
+
+		return 0.1;
+
+	}
+
+	public double prim(GraphByLists<T, E> g, Vertex<T> ini) {
+
+		ArrayList<Vertex<T>> vertices = g.getVertices();
+		boolean[] visited = new boolean[vertices.size()];
+		double[] costs = new double[vertices.size()];
+		int[] paths = new int[vertices.size()];
+		int visits = 0;
+		int start = g.getIndexVertex(ini.getValue());
+		double cost = 0.0;
+		int initial = start;
+
+		// Refill costs
+		for (int i = 0; i < costs.length; i++) {
+
+			if (i != start) {
+				costs[i] = Integer.MAX_VALUE;
+			}
+
+		}
+
+		return prim(g, ini, vertices, visited, costs, paths, visits, start, cost, initial);
+
+	}
+
 	public static void main(String[] args) {
 
 		GraphByMatrix<Integer, Integer> g = new GraphByMatrix<>(5);
 		MethodsGraphs<Integer, Integer> m = new MethodsGraphs<>();
 
-		Integer trece = 13;
-		Integer ocho = 8;
-		Integer nueve = 9;
-		Integer v1 = 21;
+//		Integer trece = 13;
+//		Integer ocho = 8;
+//		Integer nueve = 9;
+//		Integer v1 = 21;
+//		Integer cinco = 5;
+//
+//		g.addVertex(trece);
+//		g.addVertex(ocho);
+//		g.addVertex(nueve);
+//		g.addVertex(v1);
+//		g.addVertex(cinco);
+//
+//		g.addEdge(trece, ocho, false, 5, 1);
+//		g.addEdge(trece, cinco, false, 4, 2);
+//		g.addEdge(trece, v1, false, 2, 3);
+//		g.addEdge(nueve, v1, false, 5, 4);
+//		g.addEdge(ocho, nueve, false, 6, 5);
+//		g.addEdge(v1, cinco, false, 1, 6);
+
+		GraphByLists<Integer, Integer> kruskal = new GraphByLists<>(8);
+
+		Integer cero = 0;
+		Integer uno = 1;
+		Integer dos = 2;
+		Integer tres = 3;
+		Integer cuatro = 4;
 		Integer cinco = 5;
+		Integer seis = 6;
+		Integer siete = 7;
 
-		g.addVertex(trece);
-		g.addVertex(ocho);
-		g.addVertex(nueve);
-		g.addVertex(v1);
-		g.addVertex(cinco);
+		kruskal.addVertex(cero);
+		kruskal.addVertex(uno);
+		kruskal.addVertex(dos);
+		kruskal.addVertex(tres);
+		kruskal.addVertex(cuatro);
+		kruskal.addVertex(cinco);
+		kruskal.addVertex(seis);
+		kruskal.addVertex(siete);
 
-		g.addEdge(trece, ocho, false, 5, 1);
-		g.addEdge(trece, cinco, false, 4, 2);
-		g.addEdge(trece, v1, false, 2, 3);
-		g.addEdge(nueve, v1, false, 5, 4);
-		g.addEdge(ocho, nueve, false, 6, 5);
-		g.addEdge(v1, cinco, false, 1, 6);
+		kruskal.addEdge(cero, cuatro, false, 5, 1);
+		kruskal.addEdge(uno, dos, false, 9, 1);
+		kruskal.addEdge(uno, tres, false, 8, 1);
+		kruskal.addEdge(uno, cinco, false, 3, 1);
+		kruskal.addEdge(uno, seis, false, 2, 1);
+		kruskal.addEdge(dos, seis, false, 4, 1);
+		kruskal.addEdge(dos, cuatro, false, 3, 1);
+		kruskal.addEdge(cuatro, seis, false, 8, 1);
+		kruskal.addEdge(cinco, siete, false, 4, 1);
+		kruskal.addEdge(cinco, seis, false, 2, 1);
 
-		System.out.println(g.getVertices());
-
-		GraphByLists<String, Integer> p = new GraphByLists<>(7);
-
-		String a = "newark";
-		String b = "Woodbridge";
-		String c = "Trenton";
-		String d = "Asbury";
-		String e = "Atlantic";
-		String f = "Camden";
-		String h = "Cape";
-
-		p.addVertex(a);
-		p.addVertex(b);
-		p.addVertex(c);
-		p.addVertex(d);
-		p.addVertex(e);
-		p.addVertex(f);
-		p.addVertex(h);
-
-		p.addEdge(a, b, false, 3.75, 0);
-		p.addEdge(b, d, false, 11.25, 0);
-		p.addEdge(b, c, false, 4.25, 0);
-		p.addEdge(b, f, false, 13.5, 0);
-		p.addEdge(c, d, false, 14.75, 0);
-		p.addEdge(c, f, false, 3.4, 0);
-		p.addEdge(f, e, false, 4.5, 0);
-		p.addEdge(f, h, false, 12.5, 0);
-		p.addEdge(d, e, false, 13.5, 0);
-		p.addEdge(e, h, false, 8.5, 0);
-
-		GraphByMatrix<Integer, Integer> floyd = new GraphByMatrix<>(5);
-
-		Integer zero = 0;
-		Integer one = 1;
-		Integer two = 2;
-		Integer three = 3;
-		Integer four = 4;
-
-		floyd.addVertex(zero);
-		floyd.addVertex(one);
-		floyd.addVertex(two);
-		floyd.addVertex(three);
-		floyd.addVertex(four);
-
-		floyd.addEdge(zero, one, false, 100, 0);
-		floyd.addEdge(zero, two, false, 200, 0);
-		floyd.addEdge(zero, three, false, 96, 0);
-		floyd.addEdge(zero, four, false, 25, 0);
-		floyd.addEdge(one, two, false, 78, 0);
-		floyd.addEdge(one, three, false, 87, 0);
-		floyd.addEdge(four, two, false, 85, 0);
-		floyd.addEdge(four, three, false, 312, 0);
-
-		System.out.println(Arrays.deepToString(m.floydWarshall(floyd)));
+		System.out.println(m.prim(kruskal, new Vertex<Integer>(cero)));
 
 	}
 
