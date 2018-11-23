@@ -43,6 +43,37 @@ public class InitialPanel  extends JPanel {
 	   
 	}
 	
+	 
+	public MainWindow getWindow() {
+		return window;
+	}
+
+
+	public void setWindow(MainWindow window) {
+		this.window = window;
+	}
+
+
+	public MapPanel getMap() {
+		return map;
+	}
+
+
+	public void setMap(MapPanel map) {
+		this.map = map;
+	}
+
+
+	public InfoPanel getInfo() {
+		return info;
+	}
+
+
+	public void setInfo(InfoPanel info) {
+		this.info = info;
+	}
+
+
 	public void paintComponent(Graphics g) {
 
 		super.paintComponent(g);

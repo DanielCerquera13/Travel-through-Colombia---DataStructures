@@ -41,7 +41,10 @@ public class InfoPanel extends JPanel implements ActionListener {
 
          from  = new JLabel("From:");
          to = new JLabel("To:");
-         comboFrom = new JComboBox<>();
+         String[] arreglo = {"a","b"};
+
+         comboFrom = new JComboBox<String>(arreglo);
+         
          comboFrom.addActionListener(this);
          comboTo = new JComboBox<>();
          comboTo.addActionListener(this);
@@ -72,6 +75,7 @@ public class InfoPanel extends JPanel implements ActionListener {
 		 comboFrom.setFont(new Font("Garamond", 1, 20));
 		 comboFrom.setForeground(Color.WHITE);
 		 comboFrom.setBounds(216, 117, 180, 100);
+		 comboFrom.setSelectedIndex(-1);
 
 
 		 
@@ -114,6 +118,22 @@ public class InfoPanel extends JPanel implements ActionListener {
 	}
 	
 	
+	public JComboBox getComboFrom() {
+		return comboFrom;
+	}
+
+	public void setComboFrom(JComboBox comboFrom) {
+		this.comboFrom = comboFrom;
+	}
+
+	public JComboBox getComboTo() {
+		return comboTo;
+	}
+
+	public void setComboTo(JComboBox comboTo) {
+		this.comboTo = comboTo;
+	}
+
 	public JLabel getTxtDistance() {
 		return txtDistance;
 	}
@@ -124,7 +144,7 @@ public class InfoPanel extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
