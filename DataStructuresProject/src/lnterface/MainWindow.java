@@ -15,8 +15,9 @@ public class MainWindow extends JFrame{
 	setSize(1280,768);
 	setResizable(false);
 	
-	Image icon= Toolkit.getDefaultToolkit().createImage("./imgs/Carro.png");
-	setIconImage(icon);
+	setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("./imgs/Carro.png").getImage(), new Point(0, 0), "Car Cursor"));
+	
+	
 	
 	
       initial = new InitialPanel(this);
