@@ -55,7 +55,7 @@ public class MapPanel extends JPanel {
 		City[] cities = initial.getWindow().getTravel().getCities();
 
 		 for (int i = 0; i < cities.length; i++) {
-			g2.fillOval(cities[i].getX(), cities[i].getY(), 5, 5);
+			g2.fillOval(cities[i].getX(), cities[i].getY(), 7, 7);
 		}
 		 
 		 for (int i = 0; i < cities.length; i++) {
