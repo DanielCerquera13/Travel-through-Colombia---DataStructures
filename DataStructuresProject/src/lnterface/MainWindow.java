@@ -15,6 +15,10 @@ public class MainWindow extends JFrame{
 	setSize(1280,768);
 	setResizable(false);
 	
+	Image icon= Toolkit.getDefaultToolkit().createImage("./imgs/Carro.png");
+	setIconImage(icon);
+	
+	
       initial = new InitialPanel(this);
       add(initial, BorderLayout.CENTER);
 	   setVisible(true);
