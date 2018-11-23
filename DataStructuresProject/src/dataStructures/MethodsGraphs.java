@@ -32,8 +32,6 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 			if (visited[g
 					.getIndexVertex((T) vertices.get(index).getEdges().get(i).getDestination().getValue())] == false) {
 
-				System.out.println((T) vertices.get(index).getEdges().get(i).getDestination().getValue());
-
 				return DFS(g, (Vertex<T>) vertices.get(index).getEdges().get(i).getDestination(), visited, stack, dfs);
 
 			}
@@ -663,12 +661,6 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 		visited[start] = true;
 		visits += 1;
 
-		for (int i = 0; i < paths.length; i++) {
-
-			paths[i] = -1;
-
-		}
-
 		Vertex<T> actual = ini;
 
 		if (visits <= vertices.size()) {
@@ -700,7 +692,7 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 
 		}
 
-		return 0.1;
+		return cost;
 
 	}
 
@@ -721,6 +713,12 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 			if (i != start) {
 				costs[i] = Integer.MAX_VALUE;
 			}
+
+		}
+
+		for (int i = 0; i < paths.length; i++) {
+
+			paths[i] = -1;
 
 		}
 
@@ -746,13 +744,7 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 		}
 
 		visited[start] = true;
-		visits += 1;
-
-		for (int i = 0; i < paths.length; i++) {
-
-			paths[i] = -1;
-
-		}
+		visits += 1;		
 
 		Vertex<T> actual = ini;
 
@@ -778,13 +770,13 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 
 			int min = indexMinimumCost(costs, visited);
 			ini = g.getVertices().get(min);
-			start = min;
+		
 
-			return prim(g, ini, vertices, visited, costs, paths, visits, start, cost, initial);
+			return prim(g, ini, vertices, visited, costs, paths, visits, min, cost, initial);
 
 		}
 
-		return 0.1;
+		return cost;
 
 	}
 
@@ -807,14 +799,20 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 			}
 
 		}
+		
+		for (int i = 0; i < paths.length; i++) {
 
+			paths[i] = -1;
+
+		}
+		
 		return prim(g, ini, vertices, visited, costs, paths, visits, start, cost, initial);
 
 	}
 
 	public static void main(String[] args) {
 
-		GraphByMatrix<Integer, Integer> g = new GraphByMatrix<>(5);
+		GraphByMatrix<Integer, Integer> g = new GraphByMatrix<>(8);
 		MethodsGraphs<Integer, Integer> m = new MethodsGraphs<>();
 
 //		Integer trece = 13;
@@ -836,8 +834,6 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 //		g.addEdge(ocho, nueve, false, 6, 5);
 //		g.addEdge(v1, cinco, false, 1, 6);
 
-		GraphByLists<Integer, Integer> kruskal = new GraphByLists<>(8);
-
 		Integer cero = 0;
 		Integer uno = 1;
 		Integer dos = 2;
@@ -847,27 +843,29 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 		Integer seis = 6;
 		Integer siete = 7;
 
-		kruskal.addVertex(cero);
-		kruskal.addVertex(uno);
-		kruskal.addVertex(dos);
-		kruskal.addVertex(tres);
-		kruskal.addVertex(cuatro);
-		kruskal.addVertex(cinco);
-		kruskal.addVertex(seis);
-		kruskal.addVertex(siete);
+		g.addVertex(cero);
+		g.addVertex(uno);
+		g.addVertex(dos);
+		g.addVertex(tres);
+		g.addVertex(cuatro);
+		g.addVertex(cinco);
+		g.addVertex(seis);
+		g.addVertex(siete);
 
-		kruskal.addEdge(cero, cuatro, false, 5, 1);
-		kruskal.addEdge(uno, dos, false, 9, 1);
-		kruskal.addEdge(uno, tres, false, 8, 1);
-		kruskal.addEdge(uno, cinco, false, 3, 1);
-		kruskal.addEdge(uno, seis, false, 2, 1);
-		kruskal.addEdge(dos, seis, false, 4, 1);
-		kruskal.addEdge(dos, cuatro, false, 3, 1);
-		kruskal.addEdge(cuatro, seis, false, 8, 1);
-		kruskal.addEdge(cinco, siete, false, 4, 1);
-		kruskal.addEdge(cinco, seis, false, 2, 1);
+		g.addEdge(cero, uno, false, 5, 0);
+		g.addEdge(cero, cuatro, false, 4, 0);
+		g.addEdge(uno, dos, false, 1, 0);
+		g.addEdge(uno, tres, false, 3, 0);
+		g.addEdge(uno, cinco, false, 7, 0);
+		g.addEdge(uno, seis, false, 2, 0);
+		g.addEdge(dos, cinco, false, 9, 0);
+		g.addEdge(dos, cuatro, false, 12, 0);
+		g.addEdge(tres, siete, false, 15, 0);
+		g.addEdge(cuatro, seis, false, 20, 0);
+		g.addEdge(cuatro, siete, false, 11, 0);
+		g.addEdge(seis, siete, false, 6, 0);
 
-		System.out.println(m.prim(kruskal, new Vertex<Integer>(cero)));
+		System.out.println(m.prim(g, new Vertex<Integer>(uno)));
 
 	}
 
