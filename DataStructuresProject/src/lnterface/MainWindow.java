@@ -5,18 +5,19 @@ import javax.swing.*;
 
 public class MainWindow extends JFrame{
 
-	
+ private InitialPanel initial;
 	
 	public MainWindow() {
 	
 	setLayout(new BorderLayout());
-	setTitle("");
+	setTitle("Traveling");
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	setSize(1280,768);
 	setResizable(false);
 	
-		
-	setVisible(true);
+      initial = new InitialPanel(this);
+      add(initial, BorderLayout.CENTER);
+	   setVisible(true);
 	
 	}
 	
