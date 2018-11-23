@@ -83,17 +83,18 @@ public class InfoPanel extends JPanel implements ActionListener {
 		 
 		 to.setFont(new Font("Garamond", 1, 20));
 		 to.setForeground(Color.WHITE);
+		 
 		 to.setBounds(84, 166, 160, 40);
 		 
 		 comboFrom.setFont(new Font("Garamond", 1, 20));
-		 comboFrom.setForeground(Color.WHITE);
+		 comboFrom.setForeground(Color.BLACK);
 		 comboFrom.setBounds(180, 117, 290, 40);
 		 comboFrom.setSelectedIndex(-1);
 
 
 		 
 		 comboTo.setFont(new Font("Garamond", 1, 20));
-		 comboTo.setForeground(Color.WHITE);
+		 comboTo.setForeground(Color.BLACK);
 		 comboTo.setBounds(180, 168, 290, 40);
 		 
 		 distance.setFont(new Font("Garamond", 1, 20));
