@@ -2,6 +2,8 @@ package lnterface;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,6 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
+
+import model.City;
 
 public class InfoPanel extends JPanel implements ActionListener {
 	
@@ -96,6 +100,7 @@ public class InfoPanel extends JPanel implements ActionListener {
 		 comboTo.setFont(new Font("Garamond", 1, 20));
 		 comboTo.setForeground(Color.BLACK);
 		 comboTo.setBounds(180, 168, 290, 40);
+		 comboTo.setSelectedIndex(-1);
 		 
 		 distance.setFont(new Font("Garamond", 1, 20));
 		 distance.setForeground(Color.WHITE);
@@ -155,7 +160,22 @@ public class InfoPanel extends JPanel implements ActionListener {
 	public void setTxtDistance(JLabel txtDistance) {
 		this.txtDistance = txtDistance;
 	}
+     
+	public void paintComponent(Graphics g) {
 
+		super.paintComponent(g);
+
+         
+		Graphics2D g2 = (Graphics2D) g;
+	      
+		g2.setColor(Color.RED.brighter().brighter());
+		g2.fillOval(60, 133, 10, 10);
+		g2.setColor(Color.GREEN.brighter().brighter());
+		g2.fillOval(60,180,10,10);
+		
+		
+		repaint();
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		

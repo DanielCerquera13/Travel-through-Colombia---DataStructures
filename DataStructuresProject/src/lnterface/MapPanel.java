@@ -7,6 +7,8 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Shape;
 import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -16,9 +18,12 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
+import org.w3c.dom.events.EventTarget;
+import org.w3c.dom.views.AbstractView;
+
 import model.City;
 
-public class MapPanel extends JPanel {
+public class MapPanel extends JPanel implements MouseListener  {
 	
 	public static final Image BACKGROUND = Toolkit.getDefaultToolkit()
 			.createImage("./imgs/map3.png");
@@ -39,8 +44,24 @@ public class MapPanel extends JPanel {
          
 	      // cities = new JLabel[31];
 	     
-			 
-        
+        tooltip();
+		 addMouseListener(this);
+
+	}
+	
+	public void tooltip() {
+		
+		City[] cities = initial.getWindow().getTravel().getCities();
+
+		JLabel[] labels = new JLabel[32]; 
+		
+		for (int i = 0; i < labels.length; i++) {
+			labels[i]= new JLabel();
+			labels[i].setBounds(cities[i].getX(), cities[i].getY(), 8, 8);
+			labels[i].setBackground(new Color(0, 0, 0,0));
+			labels[i].setToolTipText(cities[i].getName());
+			add(labels[i]);
+		}
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -61,11 +82,59 @@ public class MapPanel extends JPanel {
 		 for (int i = 0; i < cities.length; i++) {
 			if(initial.getInfo().getComboFrom().getSelectedIndex() == i) {
 				
-				g2.setColor(Color.RED.brighter().brighter().brighter().brighter().brighter().brighter().brighter());
+			      
+		    	g2.setColor(Color.RED.brighter().brighter().brighter().brighter().brighter().brighter().brighter());
+			    g2.fillOval(cities[i].getX(), cities[i].getY(), 10	, 10);
+			    
+			}
+            if(initial.getInfo().getComboTo().getSelectedIndex() == i) {
+				
+				g2.setColor(Color.GREEN.brighter().brighter().brighter().brighter().brighter());
 			    g2.fillOval(cities[i].getX(), cities[i].getY(), 10	, 10);
 			}
 		}
 		
 		repaint();
 	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		
+ City[] cities = initial.getWindow().getTravel().getCities();
+		
+		for (int i = 0; i < cities.length; i++) {
+			if(e.getX()==cities[i].getX() && e.getY() == cities[i].getY()) {
+				
+			 setToolTipText(cities[i].getName());
+			}
+		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+        
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+		
 }
