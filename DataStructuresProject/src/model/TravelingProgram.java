@@ -56,6 +56,8 @@ public class TravelingProgram {
 		cities[30]=new City("Puerto Carre�o", 628, 277);
 		cities[31]=new City("San Andres",212,64);
 		
+		
+		
 		Arrays.sort(cities);
 		
 		
