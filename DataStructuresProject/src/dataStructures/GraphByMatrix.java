@@ -199,16 +199,9 @@ public class GraphByMatrix<T extends Comparable<T>, E extends Comparable<E>> imp
 
 		int indexA = getIndexVertex(vertexA);
 		int indexB = getIndexVertex(vertexB);
-
-		for (int i = 0; i < adjMatrix.length; i++) {
-
-			for (int j = 0; j < adjMatrix[0].length; j++) {
-
-				edges = adjMatrix[indexA][indexB];
-
-			}
-
-		}
+	
+		edges = adjMatrix[indexA][indexB];
+		
 
 		return edges;
 

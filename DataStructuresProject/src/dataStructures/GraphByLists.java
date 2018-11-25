@@ -118,14 +118,18 @@ public class GraphByLists<T extends Comparable<T>, E extends Comparable<E>> impl
 
 		ArrayList<Edge<E>> edgesBetween = new ArrayList<>();
 
-		for (int i = 0; i < edges.size(); i++) {
+		int indexAux = getIndexVertex(vertexA);
 
-			if (edges.get(i).getFrom().getValue() == vertexA && edges.get(i).getDestination().getValue() == vertexB) {
+		for (int i = 0; i < vertices.get(indexAux).getEdges().size(); i++) {
 
-				edgesBetween.add(edges.get(i));
-
-			}
-
+			
+		if(vertices.get(indexAux).getEdges().get(i).getFrom().getValue() == vertexA && vertices.get(indexAux).getEdges().get(i).getDestination().getValue() == vertexB) {
+			
+		edgesBetween.add((Edge<E>)vertices.get(indexAux).getEdges().get(i));
+			
+		}
+			
+			
 		}
 
 		return edgesBetween;
