@@ -1031,7 +1031,6 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 
 		}
 
-
 		System.out.println(path);
 
 	}
