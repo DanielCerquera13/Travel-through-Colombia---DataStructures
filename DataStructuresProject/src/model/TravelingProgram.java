@@ -8,13 +8,11 @@ public class TravelingProgram {
 
 	public static final int CITIES=32;
 	private City[] cities;
-	private Highway[] highways;
 	private GraphByLists<City, Highway> graph; 
 	
 	
 	public TravelingProgram() {
 		cities= new City[CITIES];
-		//highways=new Highway[];
 		graph= new GraphByLists<>(CITIES);
 		refillCities();
 		
@@ -212,16 +210,6 @@ public class TravelingProgram {
 
 	public void setCities(City[] cities) {
 		this.cities = cities;
-	}
-
-
-	public Highway[] getHighways() {
-		return highways;
-	}
-
-
-	public void setHighways(Highway[] highways) {
-		this.highways = highways;
 	}
 
 
