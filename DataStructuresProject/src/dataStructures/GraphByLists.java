@@ -114,6 +114,24 @@ public class GraphByLists<T extends Comparable<T>, E extends Comparable<E>> impl
 		this.adjList = adjList;
 	}
 
+	public ArrayList<Edge<E>> edgesBetween(T vertexA, T vertexB) {
+
+		ArrayList<Edge<E>> edgesBetween = new ArrayList<>();
+
+		for (int i = 0; i < edges.size(); i++) {
+
+			if (edges.get(i).getFrom().getValue() == vertexA && edges.get(i).getDestination().getValue() == vertexB) {
+
+				edgesBetween.add(edges.get(i));
+
+			}
+
+		}
+
+		return edgesBetween;
+
+	}
+
 	public ArrayList<Vertex<T>> getVertices() {
 		return vertices;
 	}

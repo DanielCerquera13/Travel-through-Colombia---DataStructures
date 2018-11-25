@@ -744,7 +744,7 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 		}
 
 		visited[start] = true;
-		visits += 1;		
+		visits += 1;
 
 		Vertex<T> actual = ini;
 
@@ -770,7 +770,7 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 
 			int min = indexMinimumCost(costs, visited);
 			ini = g.getVertices().get(min);
-		
+			start = min;
 
 			return prim(g, ini, vertices, visited, costs, paths, visits, min, cost, initial);
 
@@ -799,14 +799,101 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 			}
 
 		}
-		
+
 		for (int i = 0; i < paths.length; i++) {
 
 			paths[i] = -1;
 
 		}
-		
+
 		return prim(g, ini, vertices, visited, costs, paths, visits, start, cost, initial);
+
+	}
+
+	private Path<T, E> dijkstra(GraphByMatrix<T, E> g, Vertex<T> ini, ArrayList<Vertex<T>> vertices, boolean[] visited,
+			double[] costs, int[] vertexPath, Path<T, E> path, int visits, int start) {
+
+		if (visits == vertices.size()) {
+
+			return path;
+
+		}
+
+		visited[start] = true;
+		visits += 1;
+
+		Vertex<T> actual = ini;
+
+		if (visits <= vertices.size()) {
+
+			int indexActual = g.getIndexVertex(actual.getValue());
+
+			for (int i = 0; i < actual.getEdges().size(); i++) {
+
+				if (!visited[g.getIndexVertex((T) actual.getEdges().get(i).getDestination().getValue())]) {
+
+					if (costs[g.getIndexVertex(
+							(T) actual.getEdges().get(i).getDestination().getValue())] > costs[indexActual]
+									+ actual.getEdges().get(i).getCost()) {
+
+						costs[g.getIndexVertex(
+								(T) actual.getEdges().get(i).getDestination().getValue())] = costs[indexActual]
+										+ actual.getEdges().get(i).getCost();
+
+						vertexPath[g.getIndexVertex(
+								(T) actual.getEdges().get(i).getDestination().getValue())] = indexActual;
+
+					}
+
+				}
+
+			}
+
+			int min = indexMinimumCost(costs, visited);
+			ini = g.getVertices().get(min);
+			start = min;
+
+			return dijkstra(g, ini, vertices, visited, costs, vertexPath, path, visits, start);
+
+		}
+
+		return path;
+
+	}
+
+	public Path<T, E> dijkstra(GraphByMatrix<T, E> g, Vertex<T> ini) {
+
+		Path<T, E> path = new Path<>(null, g);
+
+		ArrayList<Vertex<T>> vertices = g.getVertices();
+
+		double[] costs = new double[g.getVertices().size()];
+
+		boolean[] visited = new boolean[g.getVertices().size()];
+
+		int[] vertexPath = new int[g.getVertices().size()];
+
+		int start = g.getIndexVertex(ini.getValue());
+
+		int visits = 0;
+
+		for (int i = 0; i < costs.length; i++) {
+
+			if (i != start) {
+
+				costs[i] = Double.MAX_VALUE;
+
+			}
+
+		}
+
+		for (int i = 0; i < vertexPath.length; i++) {
+
+			vertexPath[i] = -1;
+
+		}
+
+		return dijkstra(g, ini, vertices, visited, costs, vertexPath, path, visits, start);
 
 	}
 
