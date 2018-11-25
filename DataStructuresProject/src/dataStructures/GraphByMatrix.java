@@ -254,11 +254,11 @@ public class GraphByMatrix<T extends Comparable<T>, E extends Comparable<E>> imp
 					for (int k = 0; k < adjMatrix[i][j].size(); k++) {
 
 						if (adjMatrix[i][j].get(k).isDirected())
-							g += vertices.get(i).toString() + " ----> " + vertices.get(j).toString() + " : "
-									+ adjMatrix[i][j].get(k).toString() + "\n";
+							g += vertices.get(i).toString() + " -- " + adjMatrix[i][j].get(k).toString() + " --> "
+									+ vertices.get(j).toString() + "\n";
 						else
-							g += vertices.get(i).toString() + " <---> " + vertices.get(j).toString() + " : "
-									+ adjMatrix[i][j].get(k).toString() + "\n";
+							g += vertices.get(i).toString() + " <-- " + adjMatrix[i][j].get(k).toString() + " --> "
+									+ vertices.get(j).toString() + "\n";
 
 					}
 

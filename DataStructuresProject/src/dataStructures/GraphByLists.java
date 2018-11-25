@@ -154,15 +154,13 @@ public class GraphByLists<T extends Comparable<T>, E extends Comparable<E>> impl
 
 			if (edges.get(i).isDirected()) {
 
-				g += edges.get(i).getFrom().getValue().toString() + " ----> "
-						+ edges.get(i).getDestination().getValue().toString() + " : " + edges.get(i).getCost() + " - "
-						+ edges.get(i).getValue().toString();
+				g += edges.get(i).getFrom().getValue().toString() + " -- " + edges.get(i).toString() + " --> "
+						+ edges.get(i).getDestination().getValue().toString();
 
 			} else {
 
-				g += edges.get(i).getFrom().getValue().toString() + " <---> "
-						+ edges.get(i).getDestination().getValue().toString() + " : " + edges.get(i).getCost() + " - "
-						+ edges.get(i).getValue().toString();
+				g += edges.get(i).getFrom().getValue().toString() + " <-- " + edges.get(i).toString() + " --> "
+						+ edges.get(i).getDestination().getValue().toString();
 
 			}
 
