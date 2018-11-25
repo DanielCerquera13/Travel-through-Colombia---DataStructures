@@ -7,13 +7,23 @@ public class Path<T extends Comparable<T>, E extends Comparable<E>> implements C
 	private GraphByLists<T, E> list;
 	private GraphByMatrix<T, E> matrix;
 	private ArrayList<Vertex<T>> vertices;
+	private int[] path;
 
-	public Path(GraphByLists<T, E> list, GraphByMatrix<T, E> matrix) {
+	public Path(GraphByLists<T, E> list, GraphByMatrix<T, E> matrix, int[] path) {
 
 		this.list = list;
 		this.matrix = matrix;
+		this.path = path;
 		vertices = new ArrayList<>();
 
+	}
+
+	public int[] getPath() {
+		return path;
+	}
+
+	public void setPath(int[] path) {
+		this.path = path;
 	}
 
 	public ArrayList<Vertex<T>> getVertices() {
@@ -24,6 +34,8 @@ public class Path<T extends Comparable<T>, E extends Comparable<E>> implements C
 		this.vertices = vertices;
 	}
 
+		
+	
 	@Override
 	public int compareTo(Path<T, E> o) {
 		return 0;

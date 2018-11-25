@@ -863,8 +863,6 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 
 	public Path<T, E> dijkstra(GraphByMatrix<T, E> g, Vertex<T> ini) {
 
-		Path<T, E> path = new Path<>(null, g);
-
 		ArrayList<Vertex<T>> vertices = g.getVertices();
 
 		double[] costs = new double[g.getVertices().size()];
@@ -877,6 +875,9 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 
 		int visits = 0;
 
+		
+		Path<T, E> path = new Path<>(null, g, vertexPath);
+		
 		for (int i = 0; i < costs.length; i++) {
 
 			if (i != start) {
@@ -897,4 +898,48 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 
 	}
 
+	public static void main(String[] args) {
+		
+	GraphByMatrix<Integer, Integer> g = new GraphByMatrix<>(8);
+	MethodsGraphs<Integer, Integer> m = new MethodsGraphs<>();
+	
+	
+	Integer cero = 0;
+	Integer uno = 1;
+	Integer dos = 2;
+	Integer tres = 3;
+	Integer cuatro = 4;
+	Integer cinco = 5;
+	Integer seis = 6;
+	Integer siete = 7;
+	
+	
+	
+	g.addVertex(cero);
+	g.addVertex(uno);
+	g.addVertex(dos);
+	g.addVertex(tres);
+	g.addVertex(cuatro);
+	g.addVertex(cinco);
+	g.addVertex(seis);
+	g.addVertex(siete);
+	
+	
+	g.addEdge(cero, dos, false, 5, 100);
+	g.addEdge(cero, tres, false, 2, 101);
+	g.addEdge(uno, cinco, false, 6, 102);
+	g.addEdge(uno, seis, false, 9, 103);
+	g.addEdge(dos, cinco, false, 6, 104);
+	g.addEdge(tres, siete, false, 9, 105);
+	g.addEdge(cuatro, seis, false, 2, 106);
+	g.addEdge(cuatro, siete, false, 8, 107);
+	g.addEdge(seis, siete, false, 2, 108);
+	
+	
+	System.out.println(Arrays.toString(m.dijkstra(g, new Vertex<Integer>(7)).getPath()));	
+		
+		
+	}
+	
+	
 }
