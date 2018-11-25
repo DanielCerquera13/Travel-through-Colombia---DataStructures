@@ -9,6 +9,16 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 	}
 
 	// DFS by graph by Matrix Aux
+	
+	/**
+	 * This method realize the depth first search in a graph in order as the vertices were added.
+	 * @param g The graph.
+	 * @param v The vertex where the method will start the path.
+	 * @param visited A boolean array where the method controls which vertex has been visited.
+	 * @param stack A stack that the method uses to realize the DFS path.
+	 * @param dfs An arraylist to save how the method was adding all vertices according to the order.
+	 * @return
+	 */
 	private ArrayList<Vertex<T>> DFS(GraphByMatrix<T, E> g, Vertex<T> v, boolean[] visited, Stack<Vertex<T>> stack,
 			ArrayList<Vertex<T>> dfs) {
 
@@ -462,6 +472,7 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 
 	}
 
+	
 	private int disjoinAuxVertex(int[] disjoin, int pos) {
 
 		if (disjoin[pos] < 0) {
@@ -981,57 +992,6 @@ public class MethodsGraphs<T extends Comparable<T>, E extends Comparable<E>> {
 		}
 
 		return dijkstra(g, ini, vertices, visited, costs, vertexPath, path, visits, start);
-
-	}
-
-	public static void main(String[] args) {
-
-		GraphByMatrix<Integer, Integer> g = new GraphByMatrix<>(8);
-		MethodsGraphs<Integer, Integer> m = new MethodsGraphs<>();
-
-		Integer cero = 0;
-		Integer uno = 1;
-		Integer dos = 2;
-		Integer tres = 3;
-		Integer cuatro = 4;
-		Integer cinco = 5;
-		Integer seis = 6;
-		Integer siete = 7;
-
-		g.addVertex(cero);
-		g.addVertex(uno);
-		g.addVertex(dos);
-		g.addVertex(tres);
-		g.addVertex(cuatro);
-		g.addVertex(cinco);
-		g.addVertex(seis);
-		g.addVertex(siete);
-
-		g.addEdge(cero, dos, false, 5, 100);
-		g.addEdge(cero, tres, false, 2, 101);
-		g.addEdge(uno, cinco, false, 6, 102);
-		g.addEdge(uno, seis, false, 9, 103);
-		g.addEdge(dos, cinco, false, 6, 104);
-		g.addEdge(tres, siete, false, 9, 105);
-		g.addEdge(cuatro, seis, false, 2, 106);
-		g.addEdge(cuatro, siete, false, 8, 107);
-		g.addEdge(seis, siete, false, 2, 108);
-
-		ArrayList<Vertex<Integer>> camino = m.dijkstra(g, new Vertex<Integer>(7)).creatingPath(new Vertex<Integer>(7),
-				new Vertex<Integer>(0));
-
-		String path = "";
-
-		for (int i = 0; i < camino.size() - 1; i++) {
-
-			Vertex<Integer> a = camino.get(i);
-			Vertex<Integer> b = camino.get(i + 1);
-
-			path += a.toString() + " -- " + g.edgesBetween(a.getValue(), b.getValue()) + " --> " + b.toString() + "\n";
-
-		}
-
-		System.out.println(path);
 
 	}
 
