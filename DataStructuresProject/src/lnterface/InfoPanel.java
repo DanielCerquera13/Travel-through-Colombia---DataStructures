@@ -217,11 +217,11 @@ public class InfoPanel extends JPanel implements ActionListener {
 		}
 	
 		
-		else if(from == 10 || from == 24 || from ==21 ) {
+		else if(from == 10 || from == 24 || from ==21 || from==13 ) {
 			JOptionPane.showMessageDialog(this, "Desde esta ciudad origen no hay vias terrestres hacia otra ciudad del País", "No hay vias", JOptionPane.ERROR_MESSAGE);
 
 		}
-		else if ( to ==10 || to == 24 || to==21 ) {
+		else if ( to ==10 || to == 24 || to==21  || to == 13) {
 			JOptionPane.showMessageDialog(this, "No hay vias terrestres hacia la ciudad de destino", "No hay vias", JOptionPane.ERROR_MESSAGE);
 
 		}
