@@ -120,7 +120,7 @@ public class MapPanel extends JPanel {
 		//	}
            	
 		
-			g2.drawLine(froms.get(1).getValue().getX(), froms.get(1).getValue().getX(), froms.get(tos[1]).getValue().getX(),froms.get(tos[1]).getValue().getY());
+			g2.drawLine(froms.get(1).getValue().getX(), froms.get(1).getValue().getY(), froms.get(tos[1]).getValue().getX(),froms.get(tos[1]).getValue().getY());
 
         // }
 		 // initial.getInfo().setGlobal(false);
