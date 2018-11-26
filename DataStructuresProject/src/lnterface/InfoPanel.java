@@ -38,6 +38,7 @@ public class InfoPanel extends JPanel implements ActionListener {
 	private JButton travel;
 	private InitialPanel initial;
 	private String[] cities;
+	private boolean global;
 	public InfoPanel(InitialPanel initial) {
 		this.initial = initial;
 
@@ -47,6 +48,7 @@ public class InfoPanel extends JPanel implements ActionListener {
 
 	       setBorder(b);
 
+	       global = false;
          from  = new JLabel("From:");
          to = new JLabel("To:");
 
@@ -81,6 +83,14 @@ public class InfoPanel extends JPanel implements ActionListener {
 		}
 	}
 	
+	public boolean isGlobal() {
+		return global;
+	}
+
+	public void setGlobal(boolean global) {
+		this.global = global;
+	}
+
 	public void components() {
 		
 		 from.setFont(new Font("Garamond", 1, 18));
@@ -235,7 +245,11 @@ public class InfoPanel extends JPanel implements ActionListener {
 		
 	
 	}
-	
+	   
+	else if (a.equals(TRAVEL)) {
+		
+		global = true;
+	}
 	
 	}
 	

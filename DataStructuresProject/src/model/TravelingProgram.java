@@ -538,8 +538,26 @@ public class TravelingProgram {
 		return pathTxt;
 
 	}
+	
+	
 
-	public ArrayList<Vertex<City>> getPathPrim() {
+	public City[] getCitiesK() {
+		return citiesK;
+	}
+
+	public void setCitiesK(City[] citiesK) {
+		this.citiesK = citiesK;
+	}
+
+	public GraphByLists<City, Highway> getGraphK() {
+		return graphK;
+	}
+
+	public void setGraphK(GraphByLists<City, Highway> graphK) {
+		this.graphK = graphK;
+	}
+
+	public int[] getPathPrim() {
 
 		MethodsGraphs<City, Highway> m = new MethodsGraphs<>();
 
@@ -547,13 +565,13 @@ public class TravelingProgram {
 
 		int[] pathIndex = m.primP(graphK, new Vertex<>(citiesK[0])).getPath();
 
-		for (int i = 1; i < pathIndex.length; i++) {
+		//for (int i = 1; i < pathIndex.length; i++) {
 
-			path.add(graphK.getVertices().get(pathIndex[i]));
+		//	path.add(graphK.getVertices().get(pathIndex[i]));
 
-		}
+		//}
 
-		return path;
+		return pathIndex;
 
 	}
 
