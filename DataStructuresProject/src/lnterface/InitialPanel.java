@@ -12,16 +12,31 @@ import javax.swing.border.TitledBorder;
 
 public class InitialPanel  extends JPanel {
 	
-
+  /**
+   * Constante para la imagen de fondo
+   */
 	public static final Image BACKGROUND = Toolkit.getDefaultToolkit()
 			.createImage("./imgs/flag.jpeg");
 
 	
+	/**
+	 * Relacion con el panel MapPanel
+	 */
 	private MapPanel map;
+	/**
+	 * Relacion con el panel InfoPanel
+	 */
 	private InfoPanel info;
+	/**
+	 * Relacion con el frame MainWindow
+	 */
 	private MainWindow window;
 	
      
+	/**
+	 * Constructor de la clase InitialPanel
+	 * @param window - Relacion con el frame
+	 */
 	public InitialPanel(MainWindow window) {
 		
 		
@@ -45,36 +60,41 @@ public class InitialPanel  extends JPanel {
 	}
 	
 	 
+	/**
+	 * Entrega el frame Window
+	 * @return frame window
+	 */
 	public MainWindow getWindow() {
 		return window;
 	}
 
 
-	public void setWindow(MainWindow window) {
-		this.window = window;
-	}
+	
 
-
+    /**
+     * Entrega el panel MapPanel
+     * @return - relacion con el MapPanel
+     */
 	public MapPanel getMap() {
 		return map;
 	}
 
 
-	public void setMap(MapPanel map) {
-		this.map = map;
-	}
+	
 
-
+    /**
+     * Entrega el panel InfoPanel
+     * @return relacion con el InfoPanel
+     */
 	public InfoPanel getInfo() {
 		return info;
 	}
 
 
-	public void setInfo(InfoPanel info) {
-		this.info = info;
-	}
 
-
+    /**
+     * Metodo paintComponent
+     */
 	public void paintComponent(Graphics g) {
 
 		super.paintComponent(g);

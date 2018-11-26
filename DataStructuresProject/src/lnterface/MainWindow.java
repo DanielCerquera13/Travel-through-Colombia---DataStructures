@@ -7,7 +7,13 @@ import model.TravelingProgram;
 
 public class MainWindow extends JFrame{
 
+	/**
+	 * Relacion con el Panel InitialPanel
+	 */
  private InitialPanel initial;
+  /**
+   * Relacion con el modelo
+   */
  private TravelingProgram travel;
 	
 	public MainWindow() {
@@ -30,14 +36,14 @@ public class MainWindow extends JFrame{
 	}
 	
 	
+	/**
+	 * Entrega la relacioon con el modelo
+	 * @return - relacion con el modelo
+	 */
 	public TravelingProgram getTravel() {
 		return travel;
 	}
 
-
-	public void setTravel(TravelingProgram travel) {
-		this.travel = travel;
-	}
 
 
 	public static void main(String[] args) {

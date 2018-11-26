@@ -28,10 +28,20 @@ import model.City;
 
 public class MapPanel extends JPanel {
 
+	/**
+	 * Constante para la imagen map que se usara en el panel
+	 */
 	public static final Image BACKGROUND = Toolkit.getDefaultToolkit().createImage("./imgs/map3.png");
 
+	/**
+	 * Relacion con el InitialPanel
+	 */
 	private InitialPanel initial;
-
+    
+	/**
+	 * Constructor de la clase MapPanel
+	 * @param initial - Panel de tipo InitialPanel
+	 */
 	public MapPanel(InitialPanel initial) {
 		this.initial = initial;
 
@@ -45,7 +55,10 @@ public class MapPanel extends JPanel {
 		tooltip();
 
 	}
-
+    
+	/**
+	 * Metodo para añadir tooltip a los puntos dentro del map
+	 */
 	public void tooltip() {
 
 		City[] cities = initial.getWindow().getTravel().getCities();
@@ -60,7 +73,9 @@ public class MapPanel extends JPanel {
 			add(labels[i]);
 		}
 	}
-
+    /**
+     * Metodo paintComponent
+     */
 	public void paintComponent(Graphics g) {
 
 		super.paintComponent(g);

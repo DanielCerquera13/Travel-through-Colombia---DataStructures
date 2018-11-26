@@ -26,24 +26,76 @@ import model.Highway;
 
 public class InfoPanel extends JPanel implements ActionListener {
 	
+	/**
+	 * variable constante para el boto  route
+	 */
 	public final static String ROUTE = "Route";
+	/**
+	 * variable constante para el boton travel
+	 */
 	public final static String TRAVEL = "Travel Colombia";
+	/**
+	 * variable constante para el boton clear
+	 */
 	public final static String CLEAR = "CLEAR";
 
 	
+	/**
+	 * Label para indicar ciudad de inicio
+	 */
 	private JLabel from;
+	/**
+	 * Label para indicar ciudad de destino
+	 */
 	private JLabel to;
+	/**
+	 * Lista de las ciudades de inicio
+	 */
 	private JComboBox comboFrom;
+	/**
+	 * Lista de las ciudades de destino
+	 */
 	private JComboBox comboTo;
+	/**
+	 * Label para indicar distancia entre un par de distancia en kilometros
+	 */
 	private JLabel distance;
+	/**
+	 * Area donde se visualizara la distancia total
+	 */
 	private JLabel txtDistance;
+	/**
+	 * Label para indicar la unidad de medida de la distancia
+	 */
 	private JLabel kms;
+	/**
+	 * Boton de la funcionalidad Route
+	 */
 	private JButton route;
+	/**
+	 * Boton de la funcionalidad Travel
+	 */
 	private JButton travel;
+	/**
+	 * Relacion con el panel InitialPanel
+	 */
 	private InitialPanel initial;
+	/**
+	 * arreglo de las ciudades del grafo
+	 */
 	private String[] cities;
+	/**
+	 * variable de tipo boolean para indicar cuando pintar el metodo kruskal
+	 */
 	private boolean global;
+	/**
+	 * Boton para la funcionalidad Clear
+	 */
 	private JButton clear;
+	/**
+	 * Constructor de la clase InfoPanel
+	 * @param initial - panel initialPanel
+	 */
 	public InfoPanel(InitialPanel initial) {
 		this.initial = initial;
 
@@ -80,7 +132,9 @@ public class InfoPanel extends JPanel implements ActionListener {
          
          components();
 	}
-	
+	/**
+	 * Metodo que rellena los comboTo y los comboFrom
+	 */
 	public void combox () {
 		
 		 cities = new String[32];
@@ -90,14 +144,25 @@ public class InfoPanel extends JPanel implements ActionListener {
 		}
 	}
 	
+	/**
+	 * Entrega la variabla global de tipo boolean
+	 * @return valor falso verdadero
+	 */
 	public boolean isGlobal() {
 		return global;
 	}
 
+	/**
+	 * Modifica la variable global
+	 * @param global - variable con el nuevo valor boolean
+	 */
 	public void setGlobal(boolean global) {
 		this.global = global;
 	}
 
+	/**
+	 * Metodo que inicializa los componentes
+	 */
 	public void components() {
 		
 		 from.setFont(new Font("Garamond", 1, 18));
@@ -157,32 +222,41 @@ public class InfoPanel extends JPanel implements ActionListener {
 		 add(clear);
 	}
 	
-	
+	/**
+	 * Retorna el comboFrom
+	 * @return comboFrom
+	 */
 	public JComboBox getComboFrom() {
 		return comboFrom;
 	}
 
-	public void setComboFrom(JComboBox comboFrom) {
-		this.comboFrom = comboFrom;
-	}
-
+    /**
+     * Retorna el comboTo
+     * @return comboTp
+     */
 	public JComboBox getComboTo() {
 		return comboTo;
 	}
 
-	public void setComboTo(JComboBox comboTo) {
-		this.comboTo = comboTo;
-	}
-
+	
+     /**
+      * Entrega la distancia entre las ciudades o del Prim
+      * @return
+      */
 	public JLabel getTxtDistance() {
 		return txtDistance;
 	}
-
+    /**
+     * Modifica el valor del Label txtDistance
+     * @param txtDistance
+     */
 	public void setTxtDistance(JLabel txtDistance) {
 		this.txtDistance = txtDistance;
 	}
      
-
+    /**
+     * Metodo paintcomponent 
+     */
 	public void paintComponent(Graphics g) {
 
 		super.paintComponent(g);
@@ -217,6 +291,9 @@ public class InfoPanel extends JPanel implements ActionListener {
 		repaint();
 	}
 	@Override
+	/**
+	 * Metodos de la interface ActionListener
+	 */
 	public void actionPerformed(ActionEvent e) {
 		
 		String a = e.getActionCommand();
