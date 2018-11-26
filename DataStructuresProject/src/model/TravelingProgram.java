@@ -7,13 +7,35 @@ import dataStructures.*;
 
 public class TravelingProgram {
 
+	/**
+	 * Constante de tipo entero que hace referencia a la cantidad de ciudades
+	 */
 	public static final int CITIES = 32;
+	
+	/**
+	 * Variable cities que representa un arreglo de ciudades
+	 */
 	private City[] cities;
+	
+	/**
+	 * Variable citiesK que representa un arreglo de ciudades
+	 */
 	private City[] citiesK;
 
+	/**
+	 * Variable graph que representa un Grafo por listas
+	 */
 	private GraphByLists<City, Highway> graph;
+	
+	/**
+	 * Variable graphK que representa un Grafo por listas
+	 */
 	private GraphByLists<City, Highway> graphK;
 
+	
+	/**
+	 * COnstructor de la clase TravelingProgram
+	 */
 	public TravelingProgram() {
 		cities = new City[CITIES];
 		citiesK = new City[28];
@@ -35,6 +57,10 @@ public class TravelingProgram {
 
 	}
 
+	
+	/**
+	 * Método que permite rellenar cada una de las posiciones de arreglo de ciudades (cities), con sus respectivos atributos
+	 */
 	public void refillCities() {
 
 		cities[0] = new City("Leticia", 531, 694);
@@ -74,6 +100,9 @@ public class TravelingProgram {
 
 	}
 
+	/**
+	 * Método que permite rellenar las posiciones del arreglo de ciudades (citiesK), con sus respectivos atributos 
+	 */
 	public void refillCitiesK() {
 
 		citiesK[0] = new City("Medellin", 296, 265);
@@ -109,6 +138,10 @@ public class TravelingProgram {
 
 	}
 
+	
+	/**
+	 *Método que permite rellenar el grafo(graph), agregando todas las ciudades y carreteras 
+	 */
 	public void refillGraph() {
 
 		for (int i = 0; i < cities.length; i++) {
@@ -316,6 +349,10 @@ public class TravelingProgram {
 
 	}
 
+	
+	/**
+	 * Método que permite rellenar el grafo(graphK), agregando todas sus ciudades y carreteras
+	 */
 	public void refillGraphK() {
 
 		for (int i = 0; i < citiesK.length; i++) {
@@ -491,18 +528,38 @@ public class TravelingProgram {
 
 	}
 
+	
+	/**
+	 * Método que retorna un arreglo de ciudades
+	 * @return City[]
+	 */
 	public City[] getCities() {
 		return cities;
 	}
 
+	
+	/**
+	 * Método que permite modificar el arreglo de ciudades
+	 * @param cities
+	 */
 	public void setCities(City[] cities) {
 		this.cities = cities;
 	}
 
+	
+	/**
+	 * Método que retorna un grafo por listas
+	 * @return GraphByLists
+	 */
 	public GraphByLists<City, Highway> getGraph() {
 		return graph;
 	}
-
+	
+	
+	/**
+	 * Método que permite modificar el grafo por listas
+	 * @param graph
+	 */
 	public void setGraph(GraphByLists<City, Highway> graph) {
 		this.graph = graph;
 	}
@@ -516,7 +573,15 @@ public class TravelingProgram {
 		return path;
 
 	}
+	
+	
 
+	/**
+	 * Método que retorna el camino que se debe recorrer para llegar de una ciudad a otra
+	 * @param from, ciudad de salida
+	 * @param destination, ciudad de llegada
+	 * @return String
+	 */
 	public String stringPath(Vertex<City> from, Vertex<City> destination) {
 
 		MethodsGraphs<City, Highway> m = new MethodsGraphs<>();
@@ -541,22 +606,47 @@ public class TravelingProgram {
 	
 	
 
+	/**
+	 * Método que retorna un arreglo de ciudades 
+	 * @return City[]
+	 */
 	public City[] getCitiesK() {
 		return citiesK;
 	}
 
+	
+	/**
+	 * Método que permite modificar el arreglo de ciudades
+	 * @param citiesK
+	 */
 	public void setCitiesK(City[] citiesK) {
 		this.citiesK = citiesK;
 	}
-
+	
+	
+	/**
+	 * Método que retorna un grafo por listas
+	 * @return GraphByLists
+	 */
 	public GraphByLists<City, Highway> getGraphK() {
 		return graphK;
 	}
 
+	
+	/**
+	 * Método que permite modificar el grafo por listas
+	 * @param graphK
+	 */
 	public void setGraphK(GraphByLists<City, Highway> graphK) {
 		this.graphK = graphK;
 	}
+	
+	
 
+	/**
+	 * Método que retorna un arreglo de enteros con el camino de las ciudades
+	 * @return int[]
+	 */
 	public int[] getPathPrim() {
 
 		MethodsGraphs<City, Highway> m = new MethodsGraphs<>();
