@@ -14,24 +14,23 @@ public class TravelingProgram {
 	private GraphByLists<City, Highway> graph;
 	private GraphByLists<City, Highway> graphK;
 
-
 	public TravelingProgram() {
 		cities = new City[CITIES];
-		citiesK= new City[CITIES-3];
+		citiesK = new City[28];
 		graph = new GraphByLists<>(CITIES);
-		graphK = new GraphByLists<>(CITIES);
+		graphK = new GraphByLists<>(28);
 		refillCities();
+		refillCitiesK();
 		refillGraph();
+		refillGraphK();
 
-		// System.out.println(graph.graphToString());
+//		 System.out.println(graph.graphToString());
 		MethodsGraphs<City, Highway> m;
 		m = new MethodsGraphs<>();
 
 		// System.out.println(stringPath(new Vertex<City>(cities[5]), new
 		// Vertex<City>(cities[2])));
-		// System.out.println(Arrays.toString(cities));
-		
-        System.out.println(m.prim(graph, new Vertex<City>(cities[0])));
+
 	}
 
 	public void refillCities() {
@@ -72,7 +71,7 @@ public class TravelingProgram {
 		Arrays.sort(cities);
 
 	}
-    
+
 	public void refillCitiesK() {
 
 		citiesK[0] = new City("Medellin", 296, 265);
@@ -102,12 +101,12 @@ public class TravelingProgram {
 		citiesK[24] = new City("Sincelejo", 305, 150);
 		citiesK[25] = new City("Ibagu�", 312, 358);
 		citiesK[26] = new City("Cali", 254, 381);
-		citiesK[27] = new City("Mit�", 523, 482);
-		citiesK[28] = new City("Puerto Carre�o", 628, 277);
+		citiesK[27] = new City("Puerto Carre�o", 628, 277);
 
 		Arrays.sort(citiesK);
 
 	}
+
 	public void refillGraph() {
 
 		for (int i = 0; i < cities.length; i++) {
@@ -163,7 +162,7 @@ public class TravelingProgram {
 
 		// ARAUCA
 
-		graph.addEdge(cities[0], cities[20], false, Double.MAX_VALUE, new Highway(""));
+//		graph.addEdge(cities[0], cities[20], false, Double.MAX_VALUE, new Highway(""));
 
 		graph.addEdge(cities[0], cities[31], false, 364.2, new Highway("6512"));
 
@@ -203,7 +202,7 @@ public class TravelingProgram {
 
 		graph.addEdge(cities[31], cities[3], false, 336.6, new Highway("50_MOCHI"));
 
-		graph.addEdge(cities[31], cities[20], false, Double.MAX_VALUE, new Highway(""));
+//		graph.addEdge(cities[31], cities[20], false, Double.MAX_VALUE, new Highway(""));
 
 		graph.addEdge(cities[31], cities[30], false, 251.7, new Highway("6510"));
 
@@ -257,11 +256,11 @@ public class TravelingProgram {
 
 		// PASTO
 
-		graph.addEdge(cities[17], cities[14], false, Double.MAX_VALUE, new Highway(""));
+//		graph.addEdge(cities[17], cities[14], false, Double.MAX_VALUE, new Highway(""));
 
 		// NEIVA
 
-		graph.addEdge(cities[16], cities[30], false, Double.MAX_VALUE, new Highway(""));
+//		graph.addEdge(cities[16], cities[30], false, Double.MAX_VALUE, new Highway(""));
 
 		graph.addEdge(cities[16], cities[8], false, 238.3, new Highway("PPC_FLA_1_0"));
 
@@ -273,9 +272,9 @@ public class TravelingProgram {
 
 		// FLORENCIA
 
-		graph.addEdge(cities[8], cities[30], false, Double.MAX_VALUE, new Highway(""));
+//		graph.addEdge(cities[8], cities[30], false, Double.MAX_VALUE, new Highway(""));
 
-		graph.addEdge(cities[8], cities[25], false, Double.MAX_VALUE, new Highway(""));
+//		graph.addEdge(cities[8], cities[25], false, Double.MAX_VALUE, new Highway(""));
 
 		// VILLAVICENCIO
 
@@ -285,221 +284,211 @@ public class TravelingProgram {
 
 		// SAN JOSÉ DEL GUAVIARE
 
-		graph.addEdge(cities[25], cities[20], false, Double.MAX_VALUE, new Highway(""));
-
-		graph.addEdge(cities[25], cities[21], false, Double.MAX_VALUE, new Highway(""));
-
-		graph.addEdge(cities[25], cities[13], false, Double.MAX_VALUE, new Highway(""));
+//		graph.addEdge(cities[25], cities[20], false, Double.MAX_VALUE, new Highway(""));
+//
+//		graph.addEdge(cities[25], cities[21], false, Double.MAX_VALUE, new Highway(""));
+//
+//		graph.addEdge(cities[25], cities[13], false, Double.MAX_VALUE, new Highway(""));
 
 		// PUERTO CARREÑO
 
-		graph.addEdge(cities[20], cities[21], false, Double.MAX_VALUE, new Highway(""));
+//		graph.addEdge(cities[20], cities[21], false, Double.MAX_VALUE, new Highway(""));
 
 		// PUERTO INIRIDA
 
-		graph.addEdge(cities[21], cities[13], false, Double.MAX_VALUE, new Highway(""));
+//		graph.addEdge(cities[21], cities[13], false, Double.MAX_VALUE, new Highway(""));
 
 		// MITU
 
-		graph.addEdge(cities[13], cities[10], false, Double.MAX_VALUE, new Highway(""));
+//		graph.addEdge(cities[13], cities[10], false, Double.MAX_VALUE, new Highway(""));
 
 		// SAN ANDRÉS
 
-		graph.addEdge(cities[24], cities[2], false, Double.MAX_VALUE, new Highway(""));
-
-		graph.addEdge(cities[24], cities[26], false, Double.MAX_VALUE, new Highway(""));
-
-		graph.addEdge(cities[24], cities[6], false, Double.MAX_VALUE, new Highway(""));
-
-		graph.addEdge(cities[24], cities[23], false, Double.MAX_VALUE, new Highway(""));
+//		graph.addEdge(cities[24], cities[2], false, Double.MAX_VALUE, new Highway(""));
+//
+//		graph.addEdge(cities[24], cities[26], false, Double.MAX_VALUE, new Highway(""));
+//
+//		graph.addEdge(cities[24], cities[6], false, Double.MAX_VALUE, new Highway(""));
+//
+//		graph.addEdge(cities[24], cities[23], false, Double.MAX_VALUE, new Highway(""));
 
 	}
-    
+
 	public void refillGraphK() {
 
-		for (int i = 0; i < cities.length; i++) {
+		for (int i = 0; i < citiesK.length; i++) {
 
-			graph.addVertex(cities[i]);
+			graphK.addVertex(citiesK[i]);
 		}
 
 		// RIOHACHA
 
-		graph.addEdge(cities[23], cities[26], false, 167.37, new Highway("9009"));
+		graphK.addEdge(citiesK[20], citiesK[22], false, 167.37, new Highway("9009"));
 
-		graph.addEdge(cities[23], cities[29], false, 158.2, new Highway("8004A"));
+		graphK.addEdge(citiesK[20], citiesK[25], false, 158.2, new Highway("8004A"));
 
 		// SANTA MARTA
 
-		graph.addEdge(cities[26], cities[2], false, 94.79, new Highway("9007"));
+		graphK.addEdge(citiesK[22], citiesK[2], false, 94.79, new Highway("9007"));
 
-		graph.addEdge(cities[26], cities[6], false, 158.2, new Highway("90A01"));
+		graphK.addEdge(citiesK[22], citiesK[6], false, 158.2, new Highway("90A01"));
 
-		graph.addEdge(cities[26], cities[29], false, 317.2, new Highway("8004"));
+		graphK.addEdge(citiesK[22], citiesK[25], false, 317.2, new Highway("8004"));
 
 		// BARRANQUILLA
 
-		graph.addEdge(cities[2], cities[6], false, 121.6, new Highway("90AAT05"));
+		graphK.addEdge(citiesK[2], citiesK[6], false, 121.6, new Highway("90AAT05"));
 
 		// VALLEDUPAR
 
-		graph.addEdge(cities[29], cities[7], false, 556.4, new Highway("55NS08"));
+		graphK.addEdge(citiesK[25], citiesK[7], false, 556.4, new Highway("55NS08"));
 
-		graph.addEdge(cities[29], cities[4], false, 459.1, new Highway("6602"));
+		graphK.addEdge(citiesK[25], citiesK[4], false, 459.1, new Highway("6602"));
 
 		// CARTAGENA
 
-		graph.addEdge(cities[6], cities[27], false, 190.1, new Highway("2514A"));
+		graphK.addEdge(citiesK[6], citiesK[23], false, 190.1, new Highway("2514A"));
 
-		graph.addEdge(cities[6], cities[4], false, 662.4, new Highway("45AST08"));
+		graphK.addEdge(citiesK[6], citiesK[4], false, 662.4, new Highway("45AST08"));
 
-		graph.addEdge(cities[6], cities[7], false, 759.7, new Highway("7009A"));
+		graphK.addEdge(citiesK[6], citiesK[7], false, 759.7, new Highway("7009A"));
 
 		// SINCELEJO
 
-		graph.addEdge(cities[27], cities[15], false, 167.4, new Highway("2310"));
+		graphK.addEdge(citiesK[23], citiesK[13], false, 167.4, new Highway("2310"));
 
 		// MONTERIA
 
-		graph.addEdge(cities[15], cities[12], false, 402.2, new Highway("2510"));
+		graphK.addEdge(citiesK[13], citiesK[11], false, 402.2, new Highway("2510"));
 
 		// CUCUTA
 
-		graph.addEdge(cities[7], cities[4], false, 202, new Highway("6603"));
+		graphK.addEdge(citiesK[7], citiesK[4], false, 202, new Highway("6603"));
 
-		graph.addEdge(cities[7], cities[0], false, 440.6, new Highway("6606"));
+		graphK.addEdge(citiesK[7], citiesK[0], false, 440.6, new Highway("6606"));
 
 		// ARAUCA
 
+		graphK.addEdge(citiesK[0], citiesK[27], false, 364.2, new Highway("6512"));
 
-		graph.addEdge(cities[0], cities[31], false, 364.2, new Highway("6512"));
-
-		graph.addEdge(cities[0], cities[28], false, 475.6, new Highway("55BYA"));
+		graphK.addEdge(citiesK[0], citiesK[24], false, 475.6, new Highway("55BYA"));
 
 		// BUCARAMANGA
 
-		graph.addEdge(cities[4], cities[12], false, 391, new Highway("6205"));
+		graphK.addEdge(citiesK[4], citiesK[11], false, 391, new Highway("6205"));
 
-		graph.addEdge(cities[4], cities[28], false, 279.1, new Highway("60BY14"));
+		graphK.addEdge(citiesK[4], citiesK[24], false, 279.1, new Highway("60BY14"));
 
 		// MEDELLIN
 
-		graph.addEdge(cities[12], cities[28], false, 421.7, new Highway("D1547643"));
+		graphK.addEdge(citiesK[11], citiesK[24], false, 421.7, new Highway("D1547643"));
 
-		graph.addEdge(cities[12], cities[22], false, 222.5, new Highway("6002"));
+		graphK.addEdge(citiesK[11], citiesK[19], false, 222.5, new Highway("6002"));
 
-		graph.addEdge(cities[12], cities[11], false, 198.6, new Highway("3301"));
+		graphK.addEdge(citiesK[11], citiesK[10], false, 198.6, new Highway("3301"));
 
 		// TUNJA
 
-		graph.addEdge(cities[28], cities[3], false, 162.6, new Highway("5008"));
+		graphK.addEdge(citiesK[24], citiesK[3], false, 162.6, new Highway("5008"));
 
-		graph.addEdge(cities[28], cities[31], false, 219.5, new Highway("6211"));
+		graphK.addEdge(citiesK[24], citiesK[27], false, 219.5, new Highway("6211"));
 
-		graph.addEdge(cities[28], cities[11], false, 419.6, new Highway("5005"));
+		graphK.addEdge(citiesK[24], citiesK[10], false, 419.6, new Highway("5005"));
 
 		// QUIBDO
 
-		graph.addEdge(cities[22], cities[11], false, 312.2, new Highway("29CL06_1"));
+		graphK.addEdge(citiesK[19], citiesK[10], false, 312.2, new Highway("29CL06_1"));
 
-		graph.addEdge(cities[22], cities[18], false, 259.7, new Highway("29RSA"));
+		graphK.addEdge(citiesK[19], citiesK[16], false, 259.7, new Highway("29RSA"));
 
-		graph.addEdge(cities[22], cities[5], false, 425.5, new Highway("2301"));
+		graphK.addEdge(citiesK[19], citiesK[5], false, 425.5, new Highway("2301"));
 
 		// YOPAL
 
-		graph.addEdge(cities[31], cities[3], false, 336.6, new Highway("50_MOCHI"));
+		graphK.addEdge(citiesK[27], citiesK[3], false, 336.6, new Highway("50_MOCHI"));
 
-
-		graph.addEdge(cities[31], cities[30], false, 251.7, new Highway("6510"));
+		graphK.addEdge(citiesK[27], citiesK[26], false, 251.7, new Highway("6510"));
 
 		// BOGOTA
 
-		graph.addEdge(cities[3], cities[11], false, 289.8, new Highway("5006"));
+		graphK.addEdge(citiesK[3], citiesK[10], false, 289.8, new Highway("5006"));
 
-		graph.addEdge(cities[3], cities[30], false, 114.7, new Highway("6509"));
+		graphK.addEdge(citiesK[3], citiesK[26], false, 114.7, new Highway("6509"));
 
-		graph.addEdge(cities[3], cities[9], false, 187.5, new Highway("40TLC"));
+		graphK.addEdge(citiesK[3], citiesK[9], false, 187.5, new Highway("40TLC"));
 
-		graph.addEdge(cities[3], cities[16], false, 299, new Highway("43HL02"));
+		graphK.addEdge(citiesK[3], citiesK[14], false, 299, new Highway("43HL02"));
 
 		// MANIZALES
 
-		graph.addEdge(cities[11], cities[18], false, 51.4, new Highway("PPC_PER1_0"));
+		graphK.addEdge(citiesK[10], citiesK[16], false, 51.4, new Highway("PPC_PER1_0"));
 
-		graph.addEdge(cities[11], cities[9], false, 182, new Highway("40QN05"));
+		graphK.addEdge(citiesK[10], citiesK[9], false, 182, new Highway("40QN05"));
 
 		// PEREIRA
 
-		graph.addEdge(cities[18], cities[9], false, 120.8, new Highway("29QN01"));
+		graphK.addEdge(citiesK[16], citiesK[9], false, 120.8, new Highway("29QN01"));
 
-		graph.addEdge(cities[18], cities[1], false, 49.9, new Highway("PPC_ARM_6_0"));
+		graphK.addEdge(citiesK[16], citiesK[1], false, 49.9, new Highway("PPC_ARM_6_0"));
 
 		// ARMENIA
 
-		graph.addEdge(cities[1], cities[5], false, 180.5, new Highway("PPC_CLI1_0"));
+		graphK.addEdge(citiesK[1], citiesK[5], false, 180.5, new Highway("PPC_CLI1_0"));
 
-		graph.addEdge(cities[1], cities[9], false, 84.2, new Highway("4003"));
+		graphK.addEdge(citiesK[1], citiesK[9], false, 84.2, new Highway("4003"));
 
 		// CALI
 
-		graph.addEdge(cities[5], cities[19], false, 140.1, new Highway("25CCB"));
+		graphK.addEdge(citiesK[5], citiesK[17], false, 140.1, new Highway("25CCB"));
 
-		graph.addEdge(cities[5], cities[9], false, 263.5, new Highway("4002A"));
+		graphK.addEdge(citiesK[5], citiesK[9], false, 263.5, new Highway("4002A"));
 
-		graph.addEdge(cities[5], cities[16], false, 365.4, new Highway("4505"));
+		graphK.addEdge(citiesK[5], citiesK[14], false, 365.4, new Highway("4505"));
 
 		// IBAGUE
 
-		graph.addEdge(cities[9], cities[16], false, 204.2, new Highway("43HL02"));
+		graphK.addEdge(citiesK[9], citiesK[14], false, 204.2, new Highway("43HL02"));
 
 		// POPAYAN
 
-		graph.addEdge(cities[19], cities[17], false, 224.3, new Highway("PPC_PST2_0"));
+		graphK.addEdge(citiesK[17], citiesK[15], false, 224.3, new Highway("PPC_PST2_0"));
 
-		graph.addEdge(cities[19], cities[16], false, 276.5, new Highway("PPC_NVA_1_0"));
+		graphK.addEdge(citiesK[17], citiesK[14], false, 276.5, new Highway("PPC_NVA_1_0"));
 
-		graph.addEdge(cities[19], cities[14], false, 282.8, new Highway("4503"));
+		graphK.addEdge(citiesK[17], citiesK[12], false, 282.8, new Highway("4503"));
 
 		// PASTO
 
-
 		// NEIVA
 
+		graphK.addEdge(citiesK[14], citiesK[8], false, 238.3, new Highway("PPC_FLA_1_0"));
 
-		graph.addEdge(cities[16], cities[8], false, 238.3, new Highway("PPC_FLA_1_0"));
-
-		graph.addEdge(cities[16], cities[14], false, 322.1, new Highway("45PT34"));
+		graphK.addEdge(citiesK[14], citiesK[12], false, 322.1, new Highway("45PT34"));
 
 		// MOCOA
 
-		graph.addEdge(cities[14], cities[8], false, 257.3, new Highway("FLA3"));
+		graphK.addEdge(citiesK[12], citiesK[8], false, 257.3, new Highway("FLA3"));
 
 		// FLORENCIA
 
-	
 		// VILLAVICENCIO
 
-		graphK.addEdge(citiesK[30], citiesK[25], false, 283.6, new Highway("PPC_SJG1_0"));
+		graphK.addEdge(citiesK[26], citiesK[21], false, 283.6, new Highway("PPC_SJG1_0"));
 
-		graphK.addEdge(citiesK[30], citiesK[20], false, 852.5, new Highway("40"));
+		graphK.addEdge(citiesK[26], citiesK[18], false, 852.5, new Highway("40"));
 
 		// SAN JOSÉ DEL GUAVIARE
 
-	
-
 		// PUERTO CARREÑO
-
 
 		// PUERTO INIRIDA
 
-
 		// MITU
-
 
 		// SAN ANDRÉS
 
-		
 	}
+
 	public City[] getCities() {
 		return cities;
 	}
