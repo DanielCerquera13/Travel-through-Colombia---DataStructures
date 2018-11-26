@@ -11,30 +11,31 @@ public class TravelingProgram {
 	 * Constante de tipo entero que hace referencia a la cantidad de ciudades
 	 */
 	public static final int CITIES = 32;
-	
+
 	/**
 	 * Variable cities que representa un arreglo de ciudades
 	 */
 	private City[] cities;
-	
+
 	/**
 	 * Variable citiesK que representa un arreglo de ciudades
 	 */
 	private City[] citiesK;
 
 	/**
-	 * Variable graph que representa un Grafo por listas
+	 * Variable graph que representa un Grafo por listas (Este es el grafo original
+	 * con el cual se realizan los caminos cortos de una ciudad a otra
 	 */
 	private GraphByLists<City, Highway> graph;
-	
+
 	/**
-	 * Variable graphK que representa un Grafo por listas
+	 * Variable graphK que representa un Grafo por listas (Este grafo se garantiza
+	 * que es conexo, para poder realizar los algoritmos de grafos).
 	 */
 	private GraphByLists<City, Highway> graphK;
 
-	
 	/**
-	 * COnstructor de la clase TravelingProgram
+	 * Constructor de la clase TravelingProgram
 	 */
 	public TravelingProgram() {
 		cities = new City[CITIES];
@@ -52,14 +53,14 @@ public class TravelingProgram {
 
 		// System.out.println(stringPath(new Vertex<City>(cities[5]), new
 		// Vertex<City>(cities[2])));
-		
+
 //		System.out.println(getPathPrim());
 
 	}
 
-	
 	/**
-	 * Método que permite rellenar cada una de las posiciones de arreglo de ciudades (cities), con sus respectivos atributos
+	 * MÃ©todo que permite rellenar cada una de las posiciones de arreglo de ciudades
+	 * (cities), con sus respectivos atributos
 	 */
 	public void refillCities() {
 
@@ -72,36 +73,37 @@ public class TravelingProgram {
 		cities[6] = new City("Manizales", 296, 314);
 		cities[7] = new City("Florencia", 296, 461);
 		cities[8] = new City("Yopal", 438, 312);
-		cities[9] = new City("Popayán", 244, 426);
+		cities[9] = new City("Popayan", 244, 426);
 		cities[10] = new City("Valledupar", 391, 95);
-		cities[11] = new City("Quibdó", 245, 293);
-		cities[12] = new City("Montería", 285, 167);
-		cities[13] = new City("Bogotá", 357, 337);
-		cities[14] = new City("Puerto Inírida", 617, 378);
-		cities[15] = new City("San José del Guaviare", 418, 426);
+		cities[11] = new City("Quibdo", 245, 293);
+		cities[12] = new City("Monteria", 285, 167);
+		cities[13] = new City("Bogota", 357, 337);
+		cities[14] = new City("Puerto Inirida", 617, 378);
+		cities[15] = new City("San Jose del Guaviare", 418, 426);
 		cities[16] = new City("Neiva", 304, 406);
 		cities[17] = new City("Riohacha", 412, 54);
 		cities[18] = new City("Santa Marta", 359, 63);
 		cities[19] = new City("Villavicencio", 377, 362);
 		cities[20] = new City("Pasto", 214, 475);
-		cities[21] = new City("Cúcuta", 425, 199);
+		cities[21] = new City("Cucuta", 425, 199);
 		cities[22] = new City("Mocoa", 244, 485);
 		cities[23] = new City("Armenia", 289, 343);
 		cities[24] = new City("Pereira", 285, 330);
 		cities[25] = new City("Bucaramanga", 392, 238);
 		cities[26] = new City("Sincelejo", 305, 150);
-		cities[27] = new City("Ibagué", 312, 358);
+		cities[27] = new City("Ibague", 312, 358);
 		cities[28] = new City("Cali", 254, 381);
-		cities[29] = new City("Mitú", 523, 482);
-		cities[30] = new City("Puerto Carreño", 628, 277);
-		cities[31] = new City("San Andrés", 212, 64);
+		cities[29] = new City("Mitu", 523, 482);
+		cities[30] = new City("Puerto Carrenio", 628, 277);
+		cities[31] = new City("San Andres", 212, 64);
 
 		Arrays.sort(cities);
 
 	}
 
 	/**
-	 * Método que permite rellenar las posiciones del arreglo de ciudades (citiesK), con sus respectivos atributos 
+	 * MÃ©todo que permite rellenar las posiciones del arreglo de ciudades (citiesK),
+	 * con sus respectivos atributos
 	 */
 	public void refillCitiesK() {
 
@@ -113,34 +115,34 @@ public class TravelingProgram {
 		citiesK[5] = new City("Manizales", 296, 314);
 		citiesK[6] = new City("Florencia", 296, 461);
 		citiesK[7] = new City("Yopal", 438, 312);
-		citiesK[8] = new City("Popayán", 244, 426);
+		citiesK[8] = new City("PopayÃ¡n", 244, 426);
 		citiesK[9] = new City("Valledupar", 391, 95);
-		citiesK[10] = new City("Quibdó", 245, 293);
-		citiesK[11] = new City("Montería", 285, 167);
-		citiesK[12] = new City("Bogotá", 357, 337);
-		citiesK[13] = new City("San José del Guaviare", 418, 426);
+		citiesK[10] = new City("QuibdÃ³", 245, 293);
+		citiesK[11] = new City("MonterÃ­a", 285, 167);
+		citiesK[12] = new City("BogotÃ¡", 357, 337);
+		citiesK[13] = new City("San JosÃ© del Guaviare", 418, 426);
 		citiesK[14] = new City("Neiva", 304, 406);
 		citiesK[15] = new City("Riohacha", 412, 54);
 		citiesK[16] = new City("Santa Marta", 359, 63);
 		citiesK[17] = new City("Villavicencio", 377, 362);
 		citiesK[18] = new City("Pasto", 214, 475);
-		citiesK[19] = new City("Cúcuta", 425, 199);
+		citiesK[19] = new City("CÃºcuta", 425, 199);
 		citiesK[20] = new City("Mocoa", 244, 485);
 		citiesK[21] = new City("Armenia", 289, 343);
 		citiesK[22] = new City("Pereira", 285, 330);
 		citiesK[23] = new City("Bucaramanga", 392, 238);
 		citiesK[24] = new City("Sincelejo", 305, 150);
-		citiesK[25] = new City("Ibagué", 312, 358);
+		citiesK[25] = new City("IbaguÃ©", 312, 358);
 		citiesK[26] = new City("Cali", 254, 381);
-		citiesK[27] = new City("Puerto Carreño", 628, 277);
+		citiesK[27] = new City("Puerto CarreÃ±o", 628, 277);
 
 		Arrays.sort(citiesK);
 
 	}
 
-	
 	/**
-	 *Método que permite rellenar el grafo(graph), agregando todas las ciudades y carreteras 
+	 * MÃ©todo que permite rellenar el grafo(graph), agregando todas las ciudades y
+	 * carreteras
 	 */
 	public void refillGraph() {
 
@@ -349,9 +351,9 @@ public class TravelingProgram {
 
 	}
 
-	
 	/**
-	 * Método que permite rellenar el grafo(graphK), agregando todas sus ciudades y carreteras
+	 * MÃ©todo que permite rellenar el grafo(graphK), agregando todas sus ciudades y
+	 * carreteras
 	 */
 	public void refillGraphK() {
 
@@ -528,42 +530,51 @@ public class TravelingProgram {
 
 	}
 
-	
 	/**
-	 * Método que retorna un arreglo de ciudades
-	 * @return City[]
+	 * MÃ©todo que retorna un arreglo de ciudades
+	 * 
+	 * @return City[] el arreglo de las 32 capitales de Colombia.
 	 */
 	public City[] getCities() {
 		return cities;
 	}
 
-	
 	/**
-	 * Método que permite modificar el arreglo de ciudades
-	 * @param cities
+	 * MÃ©todo que permite modificar el arreglo de ciudades
+	 * 
+	 * @param cities El arreglo por el cual se modificarÃ¡ el actual.
 	 */
 	public void setCities(City[] cities) {
 		this.cities = cities;
 	}
 
-	
 	/**
-	 * Método que retorna un grafo por listas
-	 * @return GraphByLists
+	 * MÃ©todo que retorna un grafo por listas
+	 * 
+	 * @return GraphByLists El grafo.
 	 */
 	public GraphByLists<City, Highway> getGraph() {
 		return graph;
 	}
-	
-	
+
 	/**
-	 * Método que permite modificar el grafo por listas
-	 * @param graph
+	 * MÃ©todo que permite modificar el grafo por listas
+	 * 
+	 * @param graph El grafo por el cual se modificarÃ¡ el actual.
 	 */
 	public void setGraph(GraphByLists<City, Highway> graph) {
 		this.graph = graph;
 	}
 
+	/**
+	 * MÃ©todo que construye el camino mÃ¡s corto de una ciudad a otra.
+	 * 
+	 * @param from        La ciudad de origen.
+	 * @param destination La ciudad de destino.
+	 * @return Retorna una lista de ciudades donde el primero es el origen, los
+	 *         demÃ¡s son las ciudades por las cuales se debe pasar y el ultimo es la
+	 *         ciudad de destino.
+	 */
 	public ArrayList<Vertex<City>> getPath(Vertex<City> from, Vertex<City> destination) {
 
 		MethodsGraphs<City, Highway> m = new MethodsGraphs<>();
@@ -573,11 +584,11 @@ public class TravelingProgram {
 		return path;
 
 	}
-	
-	
 
 	/**
-	 * Método que retorna el camino que se debe recorrer para llegar de una ciudad a otra
+	 * MÃ©todo que retorna el camino que se debe recorrer para llegar de una ciudad a
+	 * otra en forma de cadena de texto.
+	 * 
 	 * @param from, ciudad de salida
 	 * @param destination, ciudad de llegada
 	 * @return String
@@ -603,49 +614,51 @@ public class TravelingProgram {
 		return pathTxt;
 
 	}
-	
-	
 
 	/**
-	 * Método que retorna un arreglo de ciudades 
-	 * @return City[]
+	 * MÃ©todo que retorna un arreglo de ciudades
+	 * 
+	 * @return City[] Retorna el arreglo de ciudades que se usa para el grafo conexo
+	 *         graphK.
 	 */
 	public City[] getCitiesK() {
 		return citiesK;
 	}
 
-	
 	/**
-	 * Método que permite modificar el arreglo de ciudades
-	 * @param citiesK
+	 * MÃ©todo que permite modificar el arreglo de ciudades
+	 * 
+	 * @param citiesK El arreglo por el cual se modificarÃ¡ el actual.
 	 */
 	public void setCitiesK(City[] citiesK) {
 		this.citiesK = citiesK;
 	}
-	
-	
+
 	/**
-	 * Método que retorna un grafo por listas
-	 * @return GraphByLists
+	 * MÃ©todo que retorna un grafo por listas
+	 * 
+	 * @return GraphByLists El grafo.
 	 */
 	public GraphByLists<City, Highway> getGraphK() {
 		return graphK;
 	}
 
-	
 	/**
-	 * Método que permite modificar el grafo por listas
-	 * @param graphK
+	 * MÃ©todo que permite modificar el grafo por listas
+	 * 
+	 * @param graphK El grafo por el cual se reemplazarÃ¡ el actual.
 	 */
 	public void setGraphK(GraphByLists<City, Highway> graphK) {
 		this.graphK = graphK;
 	}
-	
-	
 
 	/**
-	 * Método que retorna un arreglo de enteros con el camino de las ciudades
-	 * @return int[]
+	 * MÃ©todo que retorna un arreglo de enteros con el camino de las ciudades con el
+	 * cual se realiza el recubrimiento de costo minimo (Kruskal o Prim)
+	 * 
+	 * @return int[] _Un arreglo de enteros que representan los vertices en la
+	 *         posicion de la lista del grafo graphK para realizar las uniones del
+	 *         recubrimiento de costo minimo.
 	 */
 	public int[] getPathPrim() {
 
@@ -655,11 +668,11 @@ public class TravelingProgram {
 
 		int[] pathIndex = m.primP(graphK, new Vertex<>(citiesK[0])).getPath();
 
-		//for (int i = 1; i < pathIndex.length; i++) {
+		// for (int i = 1; i < pathIndex.length; i++) {
 
-		//	path.add(graphK.getVertices().get(pathIndex[i]));
+		// path.add(graphK.getVertices().get(pathIndex[i]));
 
-		//}
+		// }
 
 		return pathIndex;
 

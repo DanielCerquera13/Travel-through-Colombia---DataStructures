@@ -6,10 +6,24 @@ import java.util.Stack;
 
 public class GraphByLists<T extends Comparable<T>, E extends Comparable<E>> implements IGraph<T, E> {
 
+	/**
+	 * The adjacency list of the graph.
+	 */
 	private ArrayList<ArrayList<Vertex<T>>> adjList;
+	/**
+	 * A list that contains all vertices of the graph.
+	 */
 	private ArrayList<Vertex<T>> vertices;
+	/**
+	 * A list that contains all edges of the graph.
+	 */
 	private ArrayList<Edge<E>> edges;
 
+	/**
+	 * A constructor of a graph by lists.
+	 * 
+	 * @param numVertex The number of the vertex that the graph can add.
+	 */
 	public GraphByLists(int numVertex) {
 
 		adjList = new ArrayList<ArrayList<Vertex<T>>>(numVertex);
@@ -18,6 +32,14 @@ public class GraphByLists<T extends Comparable<T>, E extends Comparable<E>> impl
 
 	}
 
+	/**
+	 * A method to get the index where the vertex are saved in the list vertices of
+	 * this class.
+	 * 
+	 * @param valueVertex The value of the vertex to know its index in the list
+	 *                    vertices of this class.
+	 * @return Returns the index of the vertex in the list vertices.
+	 */
 	public int getIndexVertex(T valueVertex) {
 
 		int index = -1;
@@ -106,14 +128,32 @@ public class GraphByLists<T extends Comparable<T>, E extends Comparable<E>> impl
 		return adjList.size();
 	}
 
+	/**
+	 * A method to get the adjacency list.
+	 * 
+	 * @return Returns a list that represents all adjacency of the graph.
+	 */
 	public ArrayList<ArrayList<Vertex<T>>> getAdjList() {
 		return adjList;
 	}
 
+	/**
+	 * A method to modify the adjacency list.
+	 * 
+	 * @param adjList The new adjacency list.
+	 */
 	public void setAdjList(ArrayList<ArrayList<Vertex<T>>> adjList) {
 		this.adjList = adjList;
 	}
 
+	/**
+	 * Method that gets all edges between two vertices.
+	 * 
+	 * @param vertexA The vertex where the edge begins.
+	 * @param vertexB The vertex where the edge ends.
+	 * @return Returns a list with all edges that the two vertices given have
+	 *         between them.
+	 */
 	public ArrayList<Edge<E>> edgesBetween(T vertexA, T vertexB) {
 
 		ArrayList<Edge<E>> edgesBetween = new ArrayList<>();
@@ -122,14 +162,13 @@ public class GraphByLists<T extends Comparable<T>, E extends Comparable<E>> impl
 
 		for (int i = 0; i < vertices.get(indexAux).getEdges().size(); i++) {
 
-			
-		if(vertices.get(indexAux).getEdges().get(i).getFrom().getValue() == vertexA && vertices.get(indexAux).getEdges().get(i).getDestination().getValue() == vertexB) {
-			
-		edgesBetween.add((Edge<E>)vertices.get(indexAux).getEdges().get(i));
-			
-		}
-			
-			
+			if (vertices.get(indexAux).getEdges().get(i).getFrom().getValue() == vertexA
+					&& vertices.get(indexAux).getEdges().get(i).getDestination().getValue() == vertexB) {
+
+				edgesBetween.add((Edge<E>) vertices.get(indexAux).getEdges().get(i));
+
+			}
+
 		}
 
 		return edgesBetween;
@@ -152,6 +191,12 @@ public class GraphByLists<T extends Comparable<T>, E extends Comparable<E>> impl
 		this.edges = edges;
 	}
 
+	/**
+	 * A method that gets all edges of a vertex.
+	 * 
+	 * @param vertex The vertex that the method will get all edges.
+	 * @return Return a list with all the edges that the specified vertex has.
+	 */
 	public ArrayList<Edge<?>> getEdgesOfVertex(T vertex) {
 
 		int index = getIndexVertex(vertex);
@@ -160,6 +205,12 @@ public class GraphByLists<T extends Comparable<T>, E extends Comparable<E>> impl
 
 	}
 
+	/**
+	 * Returns an integer number that represents all the edges that one vertex has.
+	 * 
+	 * @param vertex The vertex to know the quantity of edges.
+	 * @return Returns the quantity of edges that the specified vertex has.
+	 */
 	public int numEdgesOfVertex(T vertex) {
 
 		int index = getIndexVertex(vertex);
@@ -168,6 +219,12 @@ public class GraphByLists<T extends Comparable<T>, E extends Comparable<E>> impl
 
 	}
 
+	/**
+	 * The string representation of this graph.
+	 * 
+	 * @return Returns all vertices with all edges and their relations of this
+	 *         graph.
+	 */
 	public String graphToString() {
 
 		String g = "";

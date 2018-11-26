@@ -9,7 +9,7 @@ public class Highway implements Comparable<Highway>{
 	
 	/**
 	 * Constructor de la clase Highway
-	 * @param name
+	 * @param name El nombre de la carretera.
 	 */
 	public Highway(String name) {
 		this.name=name;
@@ -17,8 +17,8 @@ public class Highway implements Comparable<Highway>{
 
 	
 	/**
-	 * Método que retorna un string, el cual pertenece al nombre de la carretera
-	 * @return
+	 * MÃ©todo que retorna un string, el cual pertenece al nombre de la carretera
+	 * @return Retorna una cadena de texto que representa el nombre de la carretera.
 	 */
 	public String getName() {
 		return name;
@@ -26,8 +26,8 @@ public class Highway implements Comparable<Highway>{
 
 
 	/**
-	 * Método que permite modificar el nombre de la carretera
-	 * @param name
+	 * MÃ©todo que permite modificar el nombre de la carretera
+	 * @param name El nombre por el cual se va a reemplazar el actual.
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -37,7 +37,7 @@ public class Highway implements Comparable<Highway>{
 	
 	@Override
 	/**
-	 * Método que compara las carreteras de acuerdo a su nombre
+	 * MÃ©todo que compara las carreteras.
 	 */
 	public int compareTo(Highway o) {
 		// TODO Auto-generated method stub
@@ -46,7 +46,7 @@ public class Highway implements Comparable<Highway>{
 	
 	@Override
 	/**
-	 * Método toString de la carretera, a partir del nombre
+	 * MÃ©todo toString de la carretera que retorna una cadena de texto que representa el nombre de la carretera.
 	 */
 	public String toString() {
 		return name; 

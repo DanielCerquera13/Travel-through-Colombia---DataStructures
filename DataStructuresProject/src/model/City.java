@@ -20,9 +20,9 @@ public class City implements Comparable<City>{
 
 	/**
 	 * Constructor de la clase City 
-	 * @param name
-	 * @param x
-	 * @param y
+	 * @param name El nombre de la ciudad.
+	 * @param x La coordenada X de la ciudad.
+	 * @param y La coordenada Y de la ciudad.
 	 */
 	public City(String name, int x, int y) {
 		this.name=name;
@@ -33,8 +33,8 @@ public class City implements Comparable<City>{
 
 
 	/**
-	 * Método que retorna un string, el cual pertenece al nombre de una ciudad
-	 * @return string
+	 * MÃ©todo que retorna un string, el cual pertenece al nombre de una ciudad
+	 * @return Retorna una cadena de texto que representa el nombre de la ciudad.
 	 */
 	public String getName() {
 		return name;
@@ -42,8 +42,8 @@ public class City implements Comparable<City>{
 
 
 	/**
-	 * Método que permite modificar el nombre de la ciudad
-	 * @param name
+	 * MÃ©todo que permite modificar el nombre de la ciudad
+	 * @param name El nombre a modificar.
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -51,8 +51,8 @@ public class City implements Comparable<City>{
 
 
 	/**
-	 * Método que retorna un entero, que pertenece a la posición en el eje x de una ciudad 
-	 * @return int
+	 * MÃ©todo que retorna un entero, que pertenece a la posiciÃ³n en el eje x de una ciudad 
+	 * @return Retorna un numero entero que representa. la coordenada X de la ciudad.
 	 */
 	public int getX() {
 		return x;
@@ -60,8 +60,8 @@ public class City implements Comparable<City>{
 
 
 	/**
-	 * Método que permite modificar la posición en el eje X de la ciudad
-	 * @param x
+	 * MÃ©todo que permite modificar la posiciÃ³n en el eje X de la ciudad
+	 * @param x La coordenada X a modificar.
 	 */
 	public void setX(int x) {
 		this.x = x;
@@ -69,8 +69,8 @@ public class City implements Comparable<City>{
 
 
 	/**
-	 * Método que retorna un entero, que pertenece a la posición en el eje Y de una ciudad
-	 * @return int
+	 * MÃ©todo que retorna un entero, que pertenece a la posiciÃ³n en el eje Y de una ciudad
+	 * @return Retorna un numero entero que representa la coordenada Y de la ciudad.
 	 */
 	public int getY() {
 		return y;
@@ -78,8 +78,8 @@ public class City implements Comparable<City>{
 
 
 	/**
-	 * Método que permite modificar la posición en el eje Y de la ciudad
-	 * @param y
+	 * MÃ©todo que permite modificar la posiciÃ³n en el eje Y de la ciudad
+	 * @param y La coordenada Y a modificar.
 	 */
 	public void setY(int y) {
 		this.y = y;
@@ -88,7 +88,7 @@ public class City implements Comparable<City>{
 
 	@Override
 	/**
-	 * Método que compara las ciudades a partir de su nommbre
+	 * MÃ©todo que compara las ciudades con base en su nommbre
 	 */
 	public int compareTo(City o) {
 		int x=0;
@@ -104,7 +104,7 @@ public class City implements Comparable<City>{
 	
 	@Override
 	/**
-	 * Método toString de la ciudad que lo hace a partir del nombre
+	 * MÃ©todo toString de la ciudad que retorna una cadena de texto que representa el nombre de la ciudad.
 	 */
 	public String toString() {
 		return name;
