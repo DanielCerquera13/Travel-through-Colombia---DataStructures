@@ -1,5 +1,6 @@
 package lnterface;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -96,9 +97,9 @@ public class MapPanel extends JPanel {
 	   ArrayList <Vertex<City>> path = initial.getWindow().getTravel().getPath(new Vertex<City>(cities[from]), new Vertex<City>(cities[to]));  	
          
 	   for (int i = 0; i < path.size()-1; i++) {
-		   g.setColor(Color.BLUE);
-		   g.setFont(new Font("Garamound", 1, 4));
-		   g.drawLine( path.get(i).getValue().getX(),path.get(i).getValue().getY(), path.get(i+1).getValue().getX(),path.get(i+1).getValue().getY());
+		   g2.setColor(Color.CYAN.brighter());
+		   g2.setStroke(new BasicStroke(3));
+		   g2.drawLine( path.get(i).getValue().getX(),path.get(i).getValue().getY(), path.get(i+1).getValue().getX(),path.get(i+1).getValue().getY());
 	   }   
 	}
 		repaint();
