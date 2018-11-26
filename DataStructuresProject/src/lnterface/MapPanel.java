@@ -90,8 +90,11 @@ public class MapPanel extends JPanel {
 			}
 		}
 		
+		
 		int from = initial.getInfo().getComboFrom().getSelectedIndex();
 		int to= initial.getInfo().getComboTo().getSelectedIndex();
+		
+	
 		
 		if(from != -1 && to != -1) {
 	   ArrayList <Vertex<City>> path = initial.getWindow().getTravel().getPath(new Vertex<City>(cities[from]), new Vertex<City>(cities[to]));  	
@@ -102,6 +105,7 @@ public class MapPanel extends JPanel {
 		   g2.drawLine( path.get(i).getValue().getX(),path.get(i).getValue().getY(), path.get(i+1).getValue().getX(),path.get(i+1).getValue().getY());
 	   }   
 	}
+		
 		repaint();
 	}
 
