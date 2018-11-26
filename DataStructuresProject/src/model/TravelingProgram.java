@@ -66,7 +66,7 @@ public class TravelingProgram {
 		cities[0] = new City("Leticia", 531, 694);
 		cities[1] = new City("Medellin", 296, 265);
 		cities[2] = new City("Arauca", 497, 241);
-		cities[3] = new City("Barranquila", 326, 73);
+		cities[3] = new City("Barranquilla", 326, 73);
 		cities[4] = new City("Cartagena", 300, 102);
 		cities[5] = new City("Tunja", 391, 300);
 		cities[6] = new City("Manizales", 296, 314);
@@ -107,7 +107,7 @@ public class TravelingProgram {
 
 		citiesK[0] = new City("Medellin", 296, 265);
 		citiesK[1] = new City("Arauca", 497, 241);
-		citiesK[2] = new City("Barranquila", 326, 73);
+		citiesK[2] = new City("Barranquilla", 326, 73);
 		citiesK[3] = new City("Cartagena", 300, 102);
 		citiesK[4] = new City("Tunja", 391, 300);
 		citiesK[5] = new City("Manizales", 296, 314);
