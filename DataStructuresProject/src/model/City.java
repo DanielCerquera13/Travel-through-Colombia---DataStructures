@@ -33,7 +33,7 @@ public class City implements Comparable<City>{
 
 
 	/**
-	 * Método que retorna un string, el cual pertenece al nombre de una ciudad
+	 * Metodo que retorna un string, el cual pertenece al nombre de una ciudad
 	 * @return Retorna una cadena de texto que representa el nombre de la ciudad.
 	 */
 	public String getName() {
@@ -42,7 +42,7 @@ public class City implements Comparable<City>{
 
 
 	/**
-	 * Método que permite modificar el nombre de la ciudad
+	 * Metodo que permite modificar el nombre de la ciudad
 	 * @param name El nombre a modificar.
 	 */
 	public void setName(String name) {
@@ -51,7 +51,7 @@ public class City implements Comparable<City>{
 
 
 	/**
-	 * Método que retorna un entero, que pertenece a la posición en el eje x de una ciudad 
+	 * Metodo que retorna un entero, que pertenece a la posicion en el eje x de una ciudad 
 	 * @return Retorna un numero entero que representa. la coordenada X de la ciudad.
 	 */
 	public int getX() {
@@ -60,7 +60,7 @@ public class City implements Comparable<City>{
 
 
 	/**
-	 * Método que permite modificar la posición en el eje X de la ciudad
+	 * Metodo que permite modificar la posicipn en el eje X de la ciudad
 	 * @param x La coordenada X a modificar.
 	 */
 	public void setX(int x) {
@@ -69,7 +69,7 @@ public class City implements Comparable<City>{
 
 
 	/**
-	 * Método que retorna un entero, que pertenece a la posición en el eje Y de una ciudad
+	 * Metodo que retorna un entero, que pertenece a la posicion en el eje Y de una ciudad
 	 * @return Retorna un numero entero que representa la coordenada Y de la ciudad.
 	 */
 	public int getY() {
@@ -78,7 +78,7 @@ public class City implements Comparable<City>{
 
 
 	/**
-	 * Método que permite modificar la posición en el eje Y de la ciudad
+	 * Metodo que permite modificar la posicion en el eje Y de la ciudad
 	 * @param y La coordenada Y a modificar.
 	 */
 	public void setY(int y) {
@@ -88,7 +88,7 @@ public class City implements Comparable<City>{
 
 	@Override
 	/**
-	 * Método que compara las ciudades con base en su nommbre
+	 * Metodo que compara las ciudades con base en su nommbre
 	 */
 	public int compareTo(City o) {
 		int x=0;
@@ -104,7 +104,7 @@ public class City implements Comparable<City>{
 	
 	@Override
 	/**
-	 * Método toString de la ciudad que retorna una cadena de texto que representa el nombre de la ciudad.
+	 * Metodo toString de la ciudad que retorna una cadena de texto que representa el nombre de la ciudad.
 	 */
 	public String toString() {
 		return name;

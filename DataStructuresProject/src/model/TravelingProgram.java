@@ -59,7 +59,7 @@ public class TravelingProgram {
 	}
 
 	/**
-	 * Método que permite rellenar cada una de las posiciones de arreglo de ciudades
+	 * Metodo que permite rellenar cada una de las posiciones de arreglo de ciudades
 	 * (cities), con sus respectivos atributos
 	 */
 	public void refillCities() {
@@ -102,7 +102,7 @@ public class TravelingProgram {
 	}
 
 	/**
-	 * Método que permite rellenar las posiciones del arreglo de ciudades (citiesK),
+	 * Metodo que permite rellenar las posiciones del arreglo de ciudades (citiesK),
 	 * con sus respectivos atributos
 	 */
 	public void refillCitiesK() {
@@ -141,7 +141,7 @@ public class TravelingProgram {
 	}
 
 	/**
-	 * Método que permite rellenar el grafo(graph), agregando todas las ciudades y
+	 * Metodo que permite rellenar el grafo(graph), agregando todas las ciudades y
 	 * carreteras
 	 */
 	public void refillGraph() {
@@ -352,7 +352,7 @@ public class TravelingProgram {
 	}
 
 	/**
-	 * Método que permite rellenar el grafo(graphK), agregando todas sus ciudades y
+	 * Metodo que permite rellenar el grafo(graphK), agregando todas sus ciudades y
 	 * carreteras
 	 */
 	public void refillGraphK() {
@@ -531,7 +531,7 @@ public class TravelingProgram {
 	}
 
 	/**
-	 * Método que retorna un arreglo de ciudades
+	 * Metodo que retorna un arreglo de ciudades
 	 * 
 	 * @return City[] el arreglo de las 32 capitales de Colombia.
 	 */
@@ -540,7 +540,7 @@ public class TravelingProgram {
 	}
 
 	/**
-	 * Método que permite modificar el arreglo de ciudades
+	 * Metodo que permite modificar el arreglo de ciudades
 	 * 
 	 * @param cities El arreglo por el cual se modificará el actual.
 	 */
@@ -549,7 +549,7 @@ public class TravelingProgram {
 	}
 
 	/**
-	 * Método que retorna un grafo por listas
+	 * Metodo que retorna un grafo por listas
 	 * 
 	 * @return GraphByLists El grafo.
 	 */
@@ -558,7 +558,7 @@ public class TravelingProgram {
 	}
 
 	/**
-	 * Método que permite modificar el grafo por listas
+	 * Metodo que permite modificar el grafo por listas
 	 * 
 	 * @param graph El grafo por el cual se modificará el actual.
 	 */
@@ -567,7 +567,7 @@ public class TravelingProgram {
 	}
 
 	/**
-	 * Método que construye el camino más corto de una ciudad a otra.
+	 * Metodo que construye el camino más corto de una ciudad a otra.
 	 * 
 	 * @param from        La ciudad de origen.
 	 * @param destination La ciudad de destino.
@@ -586,7 +586,7 @@ public class TravelingProgram {
 	}
 
 	/**
-	 * Método que retorna el camino que se debe recorrer para llegar de una ciudad a
+	 * Metodo que retorna el camino que se debe recorrer para llegar de una ciudad a
 	 * otra en forma de cadena de texto.
 	 * 
 	 * @param from, ciudad de salida
@@ -616,7 +616,7 @@ public class TravelingProgram {
 	}
 
 	/**
-	 * Método que retorna un arreglo de ciudades
+	 * Metodo que retorna un arreglo de ciudades
 	 * 
 	 * @return City[] Retorna el arreglo de ciudades que se usa para el grafo conexo
 	 *         graphK.
@@ -626,7 +626,7 @@ public class TravelingProgram {
 	}
 
 	/**
-	 * Método que permite modificar el arreglo de ciudades
+	 * Metodo que permite modificar el arreglo de ciudades
 	 * 
 	 * @param citiesK El arreglo por el cual se modificará el actual.
 	 */
@@ -635,7 +635,7 @@ public class TravelingProgram {
 	}
 
 	/**
-	 * Método que retorna un grafo por listas
+	 * Metodo que retorna un grafo por listas
 	 * 
 	 * @return GraphByLists El grafo.
 	 */
@@ -644,7 +644,7 @@ public class TravelingProgram {
 	}
 
 	/**
-	 * Método que permite modificar el grafo por listas
+	 * Metodo que permite modificar el grafo por listas
 	 * 
 	 * @param graphK El grafo por el cual se reemplazará el actual.
 	 */
@@ -653,7 +653,7 @@ public class TravelingProgram {
 	}
 
 	/**
-	 * Método que retorna un arreglo de enteros con el camino de las ciudades con el
+	 * Metodo que retorna un arreglo de enteros con el camino de las ciudades con el
 	 * cual se realiza el recubrimiento de costo minimo (Kruskal o Prim)
 	 * 
 	 * @return int[] _Un arreglo de enteros que representan los vertices en la
