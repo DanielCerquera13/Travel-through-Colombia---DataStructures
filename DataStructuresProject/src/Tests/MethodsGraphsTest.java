@@ -115,7 +115,7 @@ class MethodsGraphsTest {
 
 	}
 
-	// Stage for comprobate the method prim in the GraphByMatrix
+	// Stage for checked the method prim in the GraphByMatrix
 	public void stageFive() {
 		mG = new MethodsGraphs<>();
 		graphMatrix = new GraphByMatrix<>(8);
@@ -148,7 +148,7 @@ class MethodsGraphsTest {
 		graphMatrix.addEdge(v6, v4, false, 5, 0);
 	}
 
-	// Stage for comprobate the method prim in the GraphByLists
+	// Stage for checked the method prim in the GraphByLists
 	public void stageSix() {
 
 		mG = new MethodsGraphs<>();
@@ -183,7 +183,7 @@ class MethodsGraphsTest {
 
 	}
 	
-	// Stage for comprobate the method kruskal in the GraphByMatrix
+	// Stage for checked the method kruskal in the GraphByMatrix
 	public void stageSeven() {
 		
 		mG = new MethodsGraphs<>();
@@ -222,7 +222,7 @@ class MethodsGraphsTest {
 	}
 	
 	
-	// Stage for comprobate the method kruskal in the GraphByLists
+	// Stage for checked the method kruskal in the GraphByLists
 	
 	public void stageEight() {
 		
