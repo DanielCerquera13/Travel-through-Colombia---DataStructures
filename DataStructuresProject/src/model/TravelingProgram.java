@@ -19,6 +19,13 @@ public class TravelingProgram {
 		refillCities();
 		refillGraph();
 
+	//	System.out.println(graph.graphToString());
+		MethodsGraphs<City, Highway> m;
+		m = new MethodsGraphs<>();
+		
+		//System.out.println(stringPath(new Vertex<City>(cities[5]), new Vertex<City>(cities[2])));
+		//System.out.println(Arrays.toString(cities));
+		
 	}
 
 	public void refillCities() {
@@ -99,7 +106,6 @@ public class TravelingProgram {
 		graph.addEdge(cities[7], cities[0], false, 440.6, new Highway("6606"));
 
 		// ARAUCA
-		graph.addEdge(cities[0], cities[20], false, 0.0, new Highway(""));
 		graph.addEdge(cities[0], cities[31], false, 364.2, new Highway("6512"));
 		graph.addEdge(cities[0], cities[28], false, 475.6, new Highway("55BYA"));
 
@@ -124,7 +130,6 @@ public class TravelingProgram {
 
 		// YOPAL
 		graph.addEdge(cities[31], cities[3], false, 336.6, new Highway("50_MOCHI"));
-		graph.addEdge(cities[31], cities[20], false, 0.0, new Highway(""));
 		graph.addEdge(cities[31], cities[30], false, 251.7, new Highway("6510"));
 
 		// BOGOTA
@@ -159,10 +164,8 @@ public class TravelingProgram {
 		graph.addEdge(cities[19], cities[14], false, 282.8, new Highway("4503"));
 
 		// PASTO
-		graph.addEdge(cities[17], cities[14], false, 0.0, new Highway(""));
 
 		// NEIVA
-		graph.addEdge(cities[16], cities[30], false, 0.0, new Highway(""));
 		graph.addEdge(cities[16], cities[8], false, 238.3, new Highway("PPC_FLA_1_0"));
 		graph.addEdge(cities[16], cities[14], false, 322.1, new Highway("45PT34"));
 
@@ -170,32 +173,23 @@ public class TravelingProgram {
 		graph.addEdge(cities[14], cities[8], false, 257.3, new Highway("FLA3"));
 
 		// FLORENCIA
-		graph.addEdge(cities[8], cities[30], false, 0.0, new Highway(""));
-		graph.addEdge(cities[8], cities[25], false, 0.0, new Highway(""));
+	
 
 		// VILLAVICENCIO
 		graph.addEdge(cities[30], cities[25], false, 283.6, new Highway("PPC_SJG1_0"));
 		graph.addEdge(cities[30], cities[20], false, 852.5, new Highway("40"));
 
-		// SAN JOS� DEL GUAVIARE
-		graph.addEdge(cities[25], cities[20], false, 0.0, new Highway(""));
-		graph.addEdge(cities[25], cities[21], false, 0.0, new Highway(""));
-		graph.addEdge(cities[25], cities[13], false, 0.0, new Highway(""));
+		// SAN JOS� DEL GUAVIARE - NO EXISTEN VIAS TERRESTRES PARA LLEGAR A ESTE LUGAR
+	
 
-		// PUERTO CARRE�O
-		graph.addEdge(cities[20], cities[21], false, 0.0, new Highway(""));
+		// PUERTO CARRE�O - NO EXISTEN VIAS TERRESTRES PARA LLEGAR A ESTE LUGAR
 
-		// PUERTO INIRIDA
-		graph.addEdge(cities[21], cities[13], false, 0.0, new Highway(""));
+		// PUERTO INIRIDA - NO EXISTEN VIAS TERRESTRES PARA LLEGAR A ESTE LUGAR
 
-		// MITU
-		graph.addEdge(cities[13], cities[10], false, 0.0, new Highway(""));
+		// MITU 
 
-		// SAN ANDR�S
-		graph.addEdge(cities[24], cities[2], false, 0.0, new Highway(""));
-		graph.addEdge(cities[24], cities[26], false, 0.0, new Highway(""));
-		graph.addEdge(cities[24], cities[6], false, 0.0, new Highway(""));
-		graph.addEdge(cities[24], cities[23], false, 0.0, new Highway(""));
+		// SAN ANDR�S - NO EXISTEN VIAS TERRESTRES PARA LLEGAR A ESTE LUGAR
+		
 
 	}
 

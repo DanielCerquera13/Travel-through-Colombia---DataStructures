@@ -9,6 +9,7 @@ import java.awt.Shape;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -21,6 +22,7 @@ import javax.swing.border.TitledBorder;
 import org.w3c.dom.events.EventTarget;
 import org.w3c.dom.views.AbstractView;
 
+import dataStructures.Vertex;
 import model.City;
 
 public class MapPanel extends JPanel {
@@ -86,7 +88,19 @@ public class MapPanel extends JPanel {
 				g2.fillOval(cities[i].getX(), cities[i].getY(), 10, 10);
 			}
 		}
-
+		
+		int from = initial.getInfo().getComboFrom().getSelectedIndex();
+		int to= initial.getInfo().getComboTo().getSelectedIndex();
+		
+		if(from != -1 && to != -1) {
+	   ArrayList <Vertex<City>> path = initial.getWindow().getTravel().getPath(new Vertex<City>(cities[from]), new Vertex<City>(cities[to]));  	
+         
+	   for (int i = 0; i < path.size()-1; i++) {
+		   g.setColor(Color.BLUE);
+		   g.setFont(new Font("Garamound", 1, 4));
+		   g.drawLine( path.get(i).getValue().getX(),path.get(i).getValue().getY(), path.get(i+1).getValue().getX(),path.get(i+1).getValue().getY());
+	   }   
+	}
 		repaint();
 	}
 

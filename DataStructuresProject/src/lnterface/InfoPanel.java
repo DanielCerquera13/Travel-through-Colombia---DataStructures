@@ -6,17 +6,20 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
+import dataStructures.Vertex;
 import model.City;
 
 public class InfoPanel extends JPanel implements ActionListener {
@@ -57,7 +60,7 @@ public class InfoPanel extends JPanel implements ActionListener {
          
          
          distance = new JLabel("Distance:");
-         txtDistance = new JLabel("1500");
+         txtDistance = new JLabel("-----");
          kms = new JLabel("Kms");
          route= new JButton("Route");
          route.addActionListener(this);
@@ -112,7 +115,7 @@ public class InfoPanel extends JPanel implements ActionListener {
 		 
 		 kms.setFont(new Font("Garamond", 1, 20));
 		 kms.setForeground(Color.WHITE);
-		 kms.setBounds(310, 220, 160, 150);
+		 kms.setBounds(320, 220, 160, 150);
 		 
 		 route.setFont(new Font("Garamond", 1, 16));
 		 
@@ -161,6 +164,7 @@ public class InfoPanel extends JPanel implements ActionListener {
 		this.txtDistance = txtDistance;
 	}
      
+
 	public void paintComponent(Graphics g) {
 
 		super.paintComponent(g);
@@ -173,13 +177,67 @@ public class InfoPanel extends JPanel implements ActionListener {
 		g2.setColor(Color.GREEN.brighter().brighter());
 		g2.fillOval(60,180,10,10);
 		
+		City[] cities = initial.getWindow().getTravel().getCities();
+
+		int from = comboFrom.getSelectedIndex();
+		int to = comboTo.getSelectedIndex();
+
+		if(comboFrom.getSelectedIndex() != -1 && comboTo.getSelectedIndex() !=-1 ) {
+		ArrayList<Vertex<City>> path = initial.getWindow().getTravel().getPath(new Vertex<City>(cities[from]), new Vertex<City>(cities[to]));
+		String msj = "";
+		double value = 0.0;
+		for (int i = 0; i < path.size()-1; i++) {
+			value += initial.getWindow().getTravel().getGraph().edgesBetween(path.get(i).getValue(), path.get(i+1).getValue()).get(0).getCost();
+		     
+			
+		} 
+		 msj+= Math.round(value);
+		    
+		txtDistance.setText(msj);
 		
+		}
 		repaint();
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+		String a = e.getActionCommand();
 		
+	if	(a.equals(ROUTE)) {
+		
+		
+		City[] cities = initial.getWindow().getTravel().getCities();
+
+		int from = comboFrom.getSelectedIndex();
+		int to = comboTo.getSelectedIndex();
+		
+		if(from == -1 || to == -1) {
+			
+			JOptionPane.showMessageDialog(this, "El origen y el destino deben ser seleccionados", "No seleccionado", JOptionPane.ERROR_MESSAGE);
+		}
+	
+		
+		else if(from == 10 || from == 24 || from ==21 ) {
+			JOptionPane.showMessageDialog(this, "Desde esta ciudad origen no hay vias terrestres hacia otra ciudad del País", "No hay vias", JOptionPane.ERROR_MESSAGE);
+
+		}
+		else if ( to ==10 || to == 24 || to==21 ) {
+			JOptionPane.showMessageDialog(this, "No hay vias terrestres hacia la ciudad de destino", "No hay vias", JOptionPane.ERROR_MESSAGE);
+
+		}
+		else {
+		
+	   String message=	initial.getWindow().getTravel().stringPath(new Vertex<City>(cities[from]), new Vertex<City>(cities[to]));
+	   //System.out.println(message);
+	  // System.out.println(to );
+	    JOptionPane.showMessageDialog(this, message, "Route", JOptionPane.INFORMATION_MESSAGE);
+		}
+		
+	
 	}
+	
+	
+	}
+	
 
 }
