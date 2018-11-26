@@ -30,6 +30,8 @@ public class TravelingProgram {
 
 		// System.out.println(stringPath(new Vertex<City>(cities[5]), new
 		// Vertex<City>(cities[2])));
+		
+//		System.out.println(getPathPrim());
 
 	}
 
@@ -543,7 +545,7 @@ public class TravelingProgram {
 
 		ArrayList<Vertex<City>> path = new ArrayList<>();
 
-		int[] pathIndex = m.primP(graphK, new Vertex<>(cities[0])).getPath();
+		int[] pathIndex = m.primP(graphK, new Vertex<>(citiesK[0])).getPath();
 
 		for (int i = 1; i < pathIndex.length; i++) {
 
