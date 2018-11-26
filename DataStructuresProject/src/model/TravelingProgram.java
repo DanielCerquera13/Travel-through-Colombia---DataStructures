@@ -51,10 +51,16 @@ public class TravelingProgram {
 		MethodsGraphs<City, Highway> m;
 		m = new MethodsGraphs<>();
 
-		// System.out.println(stringPath(new Vertex<City>(cities[5]), new
-		// Vertex<City>(cities[2])));
-
-//		System.out.println(getPathPrim());
+	
+		// Other methods.
+//		System.out.println(m.DFS(graphK, new Vertex<City>(citiesK[0])));
+//		System.out.println(m.BFS(graphK, new Vertex<City>(citiesK[0])));
+//		System.out.println(m.kruskal(graphK));
+//		System.out.println(m.prim(graphK, new Vertex<City>(citiesK[0])));
+//		System.out.println(Arrays.deepToString(m.floydWarshall(graph)));
+//		System.out.println(Arrays.deepToString(m.floydWarshall(graphK)));
+	
+		
 
 	}
 

@@ -1,6 +1,7 @@
 package lnterface;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -14,6 +15,8 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
@@ -39,6 +42,7 @@ public class InfoPanel extends JPanel implements ActionListener {
 	 */
 	public final static String CLEAR = "CLEAR";
 
+	public static final String GRAPH = "GRAPH";
 	
 	/**
 	 * Label para indicar ciudad de inicio
@@ -92,6 +96,9 @@ public class InfoPanel extends JPanel implements ActionListener {
 	 * Boton para la funcionalidad Clear
 	 */
 	private JButton clear;
+	
+	private JButton graph;
+	
 	/**
 	 * Constructor de la clase InfoPanel
 	 * @param initial - panel initialPanel
@@ -119,6 +126,7 @@ public class InfoPanel extends JPanel implements ActionListener {
          comboTo.addActionListener(this);
          comboTo.setForeground(Color.BLACK);
          
+         graph = new JButton("Graph");         
          
          distance = new JLabel("Distance:");
          txtDistance = new JLabel("-----");
@@ -169,6 +177,11 @@ public class InfoPanel extends JPanel implements ActionListener {
 		 from.setForeground(Color.WHITE);
 		 from.setBounds(84, 117, 160, 40);
 		 
+		 graph.setFont(new Font("Garamond", 1, 18));
+		 graph.setBounds(195, 60, 100, 40);
+		 graph.setActionCommand(GRAPH);
+		 graph.addActionListener(this);
+		 graph.setToolTipText("See all the connections between the cities.");
 		 
 		 to.setFont(new Font("Garamond", 1, 20));
 		 to.setForeground(Color.WHITE);
@@ -220,6 +233,7 @@ public class InfoPanel extends JPanel implements ActionListener {
 		 add(route);
 		 add(travel);
 		 add(clear);
+		 add(graph);
 	}
 	
 	/**
@@ -350,6 +364,17 @@ public class InfoPanel extends JPanel implements ActionListener {
 		initial.getMap().repaint();
 		global=false;
 		txtDistance.setText("----");
+		
+	}else if(a.equals(GRAPH)) {
+		
+		JTextArea textArea = new JTextArea(initial.getWindow().getTravel().getGraph().graphToString());
+		JScrollPane scrollPane = new JScrollPane(textArea);  
+		textArea.setLineWrap(true);  
+		textArea.setWrapStyleWord(true); 
+		textArea.setEditable(false);
+		scrollPane.setPreferredSize( new Dimension( 500, 500 ) );
+		JOptionPane.showMessageDialog(null, scrollPane, "Graph",  
+		                                       JOptionPane.INFORMATION_MESSAGE);
 		
 	}
 	}
