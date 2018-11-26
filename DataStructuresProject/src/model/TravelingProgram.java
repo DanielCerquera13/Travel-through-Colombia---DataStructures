@@ -3,9 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import dataStructures.GraphByLists;
-import dataStructures.MethodsGraphs;
-import dataStructures.Vertex;
+import dataStructures.*;
 
 public class TravelingProgram {
 
@@ -19,13 +17,14 @@ public class TravelingProgram {
 		refillCities();
 		refillGraph();
 
-	//	System.out.println(graph.graphToString());
+		// System.out.println(graph.graphToString());
 		MethodsGraphs<City, Highway> m;
 		m = new MethodsGraphs<>();
-		
-		//System.out.println(stringPath(new Vertex<City>(cities[5]), new Vertex<City>(cities[2])));
-		//System.out.println(Arrays.toString(cities));
-		
+
+		// System.out.println(stringPath(new Vertex<City>(cities[5]), new
+		// Vertex<City>(cities[2])));
+		// System.out.println(Arrays.toString(cities));
+
 	}
 
 	public void refillCities() {
@@ -173,23 +172,20 @@ public class TravelingProgram {
 		graph.addEdge(cities[14], cities[8], false, 257.3, new Highway("FLA3"));
 
 		// FLORENCIA
-	
 
 		// VILLAVICENCIO
 		graph.addEdge(cities[30], cities[25], false, 283.6, new Highway("PPC_SJG1_0"));
 		graph.addEdge(cities[30], cities[20], false, 852.5, new Highway("40"));
 
 		// SAN JOS� DEL GUAVIARE - NO EXISTEN VIAS TERRESTRES PARA LLEGAR A ESTE LUGAR
-	
 
 		// PUERTO CARRE�O - NO EXISTEN VIAS TERRESTRES PARA LLEGAR A ESTE LUGAR
 
 		// PUERTO INIRIDA - NO EXISTEN VIAS TERRESTRES PARA LLEGAR A ESTE LUGAR
 
-		// MITU 
+		// MITU
 
 		// SAN ANDR�S - NO EXISTEN VIAS TERRESTRES PARA LLEGAR A ESTE LUGAR
-		
 
 	}
 
