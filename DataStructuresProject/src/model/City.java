@@ -88,7 +88,7 @@ public class City implements Comparable<City>{
 
 	@Override
 	/**
-	 * Método que compara dos ciudades a partir de su nommbre
+	 * Método que compara las ciudades a partir de su nommbre
 	 */
 	public int compareTo(City o) {
 		int x=0;
