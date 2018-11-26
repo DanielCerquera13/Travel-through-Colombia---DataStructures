@@ -19,13 +19,17 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
+import dataStructures.MethodsGraphs;
 import dataStructures.Vertex;
 import model.City;
+import model.Highway;
 
 public class InfoPanel extends JPanel implements ActionListener {
 	
 	public final static String ROUTE = "Route";
 	public final static String TRAVEL = "Travel Colombia";
+	public final static String CLEAR = "CLEAR";
+
 	
 	private JLabel from;
 	private JLabel to;
@@ -39,6 +43,7 @@ public class InfoPanel extends JPanel implements ActionListener {
 	private InitialPanel initial;
 	private String[] cities;
 	private boolean global;
+	private JButton clear;
 	public InfoPanel(InitialPanel initial) {
 		this.initial = initial;
 
@@ -51,7 +56,9 @@ public class InfoPanel extends JPanel implements ActionListener {
 	       global = false;
          from  = new JLabel("From:");
          to = new JLabel("To:");
-
+         clear= new JButton("Clear");
+         clear.addActionListener(this);
+         clear.setActionCommand(CLEAR);
          combox();
          comboFrom = new JComboBox<String>(cities);
          comboFrom.addActionListener(this);
@@ -135,7 +142,8 @@ public class InfoPanel extends JPanel implements ActionListener {
 		 
 		 travel.setBounds(158, 630, 180, 60);
 		 
-		 
+		 clear.setBounds(200, 220, 100, 40);
+		 clear.setFont(new Font("Garamond", 1, 20));
 		
 		 add(from);
 		 add(comboFrom);
@@ -146,7 +154,7 @@ public class InfoPanel extends JPanel implements ActionListener {
 		 add(kms);
 		 add(route);
 		 add(travel);
-		 
+		 add(clear);
 	}
 	
 	
@@ -249,8 +257,24 @@ public class InfoPanel extends JPanel implements ActionListener {
 	else if (a.equals(TRAVEL)) {
 		
 		global = true;
+		comboFrom.setSelectedIndex(-1);
+		comboTo.setSelectedIndex(-1);
+		initial.getMap().repaint();
+		MethodsGraphs<City, Highway> m = new MethodsGraphs<>();
+		double msj =  m.prim(initial.getWindow().getTravel().getGraphK(), new Vertex<City>(initial.getWindow().getTravel().getCitiesK()[0]));
+	    
+		txtDistance.setText(Math.round(msj) + "");
 	}
 	
+	else if (a.equals(CLEAR)) {
+		
+		comboFrom.setSelectedIndex(-1);
+		comboTo.setSelectedIndex(-1);
+		initial.getMap().repaint();
+		global=false;
+		txtDistance.setText("----");
+		
+	}
 	}
 	
 

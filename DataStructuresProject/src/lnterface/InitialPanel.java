@@ -20,6 +20,7 @@ public class InitialPanel  extends JPanel {
 	private MapPanel map;
 	private InfoPanel info;
 	private MainWindow window;
+	
      
 	public InitialPanel(MainWindow window) {
 		

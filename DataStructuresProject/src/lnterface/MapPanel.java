@@ -109,20 +109,21 @@ public class MapPanel extends JPanel {
 		
 		
 		
-		
-        // if(initial.getInfo().isGlobal() == true) {
+        if(initial.getInfo().isGlobal() == true && from == -1 && to  == -1) {
 			
 			ArrayList<Vertex<City>> froms = initial.getWindow().getTravel().getGraphK().getVertices();
 			int []  tos= initial.getWindow().getTravel().getPathPrim();
       //     System.out.println(tos);
-		//	for (int i = 1; i < tos.length-1; i++) {
-		//		g2.drawLine(froms.get(i).getValue().getX(), froms.get(i).getValue().getX(), froms.get(tos[i]).getValue().getX(),froms.get(tos[i]).getValue().getY());
-		//	}
+			for (int i = 1; i < tos.length; i++) {
+				 g2.setColor(Color.CYAN.brighter());
+				   g2.setStroke(new BasicStroke(3));
+			g2.drawLine(froms.get(i).getValue().getX(), froms.get(i).getValue().getY(), froms.get(tos[i]).getValue().getX(),froms.get(tos[i]).getValue().getY());
+			}
            	
 		
-			g2.drawLine(froms.get(1).getValue().getX(), froms.get(1).getValue().getY(), froms.get(tos[1]).getValue().getX(),froms.get(tos[1]).getValue().getY());
-
-        // }
+		//	g2.drawLine(froms.get(1).getValue().getX(), froms.get(1).getValue().getY(), froms.get(tos[1]).getValue().getX(),froms.get(tos[1]).getValue().getY());
+            
+         }
 		 // initial.getInfo().setGlobal(false);
 		
         // }
