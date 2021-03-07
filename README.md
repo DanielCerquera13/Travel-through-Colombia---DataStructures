@@ -1,6 +1,6 @@
 # Shortest Path Colombia Cities
 
-This project is an desktop application that shows the shortest path between cities of Colombia through the main routes. Also shows the shortest path to travel all cities. 
+This project is a desktop application that shows the shortest path between cities of Colombia through the main routes. Also shows the shortest path to travel all cities. 
 
 The above functions were implemented using a **graph**.
 
